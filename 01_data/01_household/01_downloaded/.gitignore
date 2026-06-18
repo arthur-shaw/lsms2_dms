@@ -1,0 +1,5 @@
+# do not track
+# downloaded zip archives
+*.zip
+# extracted contents in sub-directories
+*/*
