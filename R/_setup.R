@@ -24,11 +24,15 @@ fun_dir <- here::here("R")
 fun_dir |>
 	# get the path of all functions by:
 	# scanning the script directory and
-	# excluding all workflow scripts, which start with a 2-digit number
-	fs::dir_ls(
-		type = "file",
-		regexp = "^[0-9]{2}",
-		invert = TRUE
+	# excluding all workflow scripts whose file name starts with
+	# - either a 2-digit number
+	# - or an underscore
+	fs::dir_ls(type = "file") |>
+	purrr::keep(
+		.p = ~ !grepl(
+			x = fs::path_file(.x),
+			pattern = "^([0-9]{2}_|_)", 
+		)
 	) |>
 	purrr::walk(.f = ~ source(.x))
 
