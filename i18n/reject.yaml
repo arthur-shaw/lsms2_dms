@@ -1,0 +1,64 @@
+# status messages
+checking_inputs:
+  en: "Checking file of interviews to reject"
+  fr: "Validation du fichier des entretiens à rejeter en cours"
+rejecting_inteviews:
+  en: "Rejecting interviews"
+  fr: "Rejet d'entretien en cours"
+
+# input validation error messages
+no_interview:
+  summary:
+    en: "No interview to reject"
+    fr: "Aucun entretien à rejeter"
+  details:
+    en: >
+      The file {.file {reject_file_name}} does not contain
+      any interviews to reject.
+    fr: >
+      Le fichier {.file {reject_file_name}} ne contient
+      aucun entretien à rejeter.
+wrong_columns:
+  summary:
+    en: "Column(s) missing from file of interviews to reject."
+    fr: "Colonne(s) absente(s) du fichier des entretiens à rejeter."
+  expected:
+    en: "Expected: {glue::glue_collapse(reject_file_columns_expected, sep = ', ')}"
+    fr: "Attendues : {glue::glue_collapse(reject_file_columns_expected, sep = ', ')}"
+  found:
+    en: "Found: {glue::glue_collapse(reject_file_columns_found, sep = ', ')}"
+    fr: "Retrouvées : {glue::glue_collapse(reject_file_columns_found, sep = ', ')}"
+column_order:
+  summary:
+    en: "Columns of {.file {reject_file_name}} are in the wrong order."
+    fr: "Colonnes du fichier {.file {reject_file_name}} sont dans le mauvais ordre"
+  expected:
+    en: "Order expected: {glue::glue_collapse(reject_file_columns_expected, sep = ', ')}"
+    fr: "Ordre attendu : {glue::glue_collapse(reject_file_columns_expected, sep = ', ')}"
+  found:
+    en: "Order found: {glue::glue_collapse(reject_file_columns_found, sep = ', ')}"
+    fr: "Ordre retrouvé : {glue::glue_collapse(reject_file_columns_found, sep = ', ')}"
+id_is_guid:
+  summary:
+    en: "Invalid content in the {.var interview__id} column"
+    fr: "Mauvais contenu de la colonne {.var interview__id}."
+  details:
+    en: >
+      The program expects a value of {.var interview__id}
+      like that in the exported data.
+      For example: {.val 1e8ac70dfbe045f9946d20b8b0591878}
+    fr: >
+      Le programme s'attend à une valeur de {.var interview__id}
+      telle que retrouvée dans les données exportée.
+      Par exemple : {.val 1e8ac70dfbe045f9946d20b8b0591878}
+status_codes:
+  summary:
+    en: "Invalid content in the {.var interview__status} column."
+    fr: "Mauvais contenu de la colonne {.var interview__status}."
+  details:
+    en: >
+      The program allows only the following values:
+      {glue::glue_collapse(valid_reject_status_codes, sep = ', ', last = ', and ')}
+    fr: >
+      Le programme n'admet que les valeurs suivantes : 
+      {glue::glue_collapse(valid_reject_status_codes, sep = ', ', last = ', et ')}

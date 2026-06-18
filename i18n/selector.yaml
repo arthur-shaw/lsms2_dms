@@ -1,0 +1,110 @@
+# ── Section headers ────────────────────────────────────────────────────────────
+header_main:
+  en: "Data Quality Workflows"
+  fr: "Flux de travail — qualité des données"
+
+header_data_source:
+  en: "Data Source"
+  fr: "Source des données"
+
+header_post_validate:
+  en: "Next Step"
+  fr: "Prochaine étape"
+
+# ── Primary menu ───────────────────────────────────────────────────────────────
+prompt_main:
+  en: "Which workflow would you like to run?"
+  fr: "Quel flux de travail souhaitez-vous exécuter ?"
+
+choice_get_data:
+  en: "Get data"
+  fr: "Obtenir les données"
+
+choice_validate:
+  en: "Validate interviews"
+  fr: "Valider les entretiens"
+
+choice_reject:
+  en: "Reject flagged interviews"
+  fr: "Rejeter les entretiens signalés"
+
+choice_monitor:
+  en: "Create monitoring report"
+  fr: "Créer un rapport de suivi"
+
+# ── Data source menu ───────────────────────────────────────────────────────────
+# glue placeholder: {workflow} (a translated workflow label)
+prompt_data_source:
+  en: "Run {workflow} using which data?"
+  fr: "Exécuter {workflow} avec quelles données ?"
+
+choice_use_existing:
+  en: "Use existing data"
+  fr: "Utiliser les données existantes"
+
+choice_fetch_new:
+  en: "Fetch new data, then run"
+  fr: "Obtenir de nouvelles données, puis exécuter"
+
+# ── Timestamp status messages ──────────────────────────────────────────────────
+# glue placeholder: {time} (formatted as "HH:MM")
+data_last_fetched_today:
+  en: "Existing data were last retrieved today at {time}."
+  fr: "Les données existantes ont été récupérées aujourd'hui à {time}."
+
+# glue placeholder: {datetime} (formatted as "YYYY-MM-DD HH:MM")
+data_last_fetched_prior:
+  en: "Existing data were last retrieved on {datetime}."
+  fr: "Les données existantes ont été récupérées le {datetime}."
+
+# glue placeholder: {workflow}
+data_not_found:
+  en: "No data found on disk. Fetching new data before running val {workflow}."
+  fr: "Aucune donnée trouvée. Récupération des données avant d'exécuter val {workflow}."
+
+# ── Post-validate menu ─────────────────────────────────────────────────────────
+prompt_post_validate:
+  en: "Validation complete. Flagged interviews found. Reject them now?"
+  fr: "Validation terminée. Des entretiens ont été signalés. Les rejeter maintenant ?"
+
+prompt_post_validate_none:
+  en: "Validation complete. No interviews to reject."
+  fr: "Validation terminée. Aucun entretien à rejeter."
+
+choice_reject_now:
+  en: "Yes — reject flagged interviews now"
+  fr: "Oui — rejeter les entretiens signalés maintenant"
+
+choice_skip_rejection:
+  en: "No — exit"
+  fr: "Non — quitter"
+
+# ── Reject workflow: no rejection file found ───────────────────────────────────
+# glue placeholder: {dir} (path to the rejections folder)
+reject_none_found:
+  en: "No interviews to reject found in {dir}. Aborting."
+  fr: "Aucun entretien à rejeter trouvé dans {dir}. Abandon."
+
+# ── Start confirmation messages ────────────────────────────────────────────────
+# glue placeholders: {workflow}, {detail}
+starting_workflow:
+  en: "Starting: {workflow} ({detail})"
+  fr: "Démarrage : {workflow} ({detail})"
+
+# glue placeholder: {timestamp} (output of format_timestamp())
+detail_existing:
+  en: "existing data from {timestamp}"
+  fr: "données existantes du {timestamp}"
+
+detail_fetching:
+  en: "fetching new data first"
+  fr: "récupération des données d'abord"
+
+detail_no_data_needed:
+  en: "no prior data required"
+  fr: "aucune donnée préalable requise"
+
+# ── Cancellation ───────────────────────────────────────────────────────────────
+cancelled:
+  en: "No workflow selected. Exiting."
+  fr: "Aucun flux de travail sélectionné. Fermeture."

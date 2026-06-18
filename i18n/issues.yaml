@@ -1,0 +1,92 @@
+any_unanswered:
+  desc:
+    en: Questions left unanswered
+    fr: Questions laissés sans réponse
+  comment:
+    en: >
+      ERROR: The interview was marked as complete,
+      but {NotAnswered} questions wre left unanswered.
+      Please answer these questions.
+    fr: >
+      ERREUR : L'entretien a été marqué comme achevé,
+      mais {NotAnswered} questions ont été laissées sans réponse.
+      Veuillez renseigner ces questions.
+no_head:
+  desc:
+    en: "No household member is designated as reference person."
+    fr: "Aucun membre désigné comme personne de référence."
+  comment:
+    en: >
+      ERROR: {desc_no_head}
+      This is impossible.
+      Please identify the corresponding household member.
+    fr: >
+      ERREUR: {desc_no_head}
+      Ceci est impossible.
+      Veuillez identifier le membre correspondant.
+more_than_one_head:
+  desc:
+    en: "More than one person designated as reference person."
+    fr: "Plus d'un membre désigné comme personne de référence."
+  comment:
+    en: >
+      ERROR: {desc_more_than_one_head}
+      This is impossible.
+      By definition, a household has only one reference person.
+      Please identify the member
+      that serves as reference person for the household.
+    fr: >
+      ERREUR: {desc_more_than_one_head}
+      Ceci est impossible.
+      Par défintion, un ménage n'a qu'une seule personne de référence.
+      Veuillez identifier le membre
+      qui sert de personne de référence pour le ménage.
+no_food:
+  desc:
+    en: >
+      No food consumed in the past 7 days,
+      neither at nor away from home.
+    fr: >
+      Aucune alimentation consommée dans les 7 derniers jours,
+      ni à la maison ni en dehors de la maison.
+  comment:
+    en: >
+      ERROR: {desc_no_food} 
+      This is impossible.
+      Even if there was no food purchase, it should still be consumption.
+      Please check and correct the answers provided in
+      sections 7 (food away from home) and 8 (food consumption).
+    fr: >
+      ERREUR: {desc_no_food} 
+      Ceci est impossible.
+      Même s'il n'y a eu d'achat d'alimentation, on devrait néaumoins avoir de la consommation.
+      Veuillez vérifier et corriger les réponses fournies dans
+      les sections 7 (repas pris à l'extérieur du ménage) et 8 (consommation alimentaire au sein du ménage).
+no_non_food:
+  desc:
+    en: No non-food consumption.
+    fr: Aucune consommation de produits non-alimentaires.
+  comment:
+    en: >
+      ERROR: {no_non_food}.
+      That is, no consumption at all, neither in the past 7 days, 30 days, 6 months, or 12 months.
+      This is highly unlikely.
+      Please check and correct answers in sections 9A, 9B, 9C, and 9D.
+    fr: >
+      ERREUR: {no_non_food}.
+      C'est à dire, aucune consommation du tout, ni dans les derniers 7 jours, 30 jours, 6 mois, ni 12 mois.
+      Ceci est hautement improbable.
+      Veuillez vérifer et corriger les réponses dans les sections 9A, 9B, 9C, et 9D.
+owns_no_assets:
+  desc:
+    en: "The household does not own any durable asset."
+    fr: "Le ménage ne possède aucun bien durable."
+  comment:
+    en: >
+      ERROR: {desc_owns_no_assets}
+      While possible, this situation is unlikely.
+      Please confirm and modify responses in section 14 as needed.
+    fr: >
+      ERREUR: {desc_owns_no_assets}.
+      Bien que possible, cette situation est probablement rare.
+      Veuillez confirmer les réponses et les modifier dans la section 14 au besoin.

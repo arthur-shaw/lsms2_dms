@@ -1,0 +1,186 @@
+global:
+  desc:
+    en: "Outlier for {..3}"
+    fr: "Valeur extrême pour {..3}"
+  comment_intro:
+    en: "Outlier identified for {..3}."
+    fr: "Valeur extrême identifée pour {..3}."
+  comment_var:
+    en: "The value of {..1}"
+    fr: "La valeur de {..1}"
+  comment_body:
+    en: >
+      ({
+        scales::label_number(
+          big.mark = ',',
+          decimal.mark = '.'
+        )(haven::zap_label(.data[[var_chr]]))
+        }
+      )
+      diverges from the norm.
+      Please check the accuracy of the value.
+      If the value is incorrect, please correct it.
+      If the value is confirmed, please leave a comment explaining it.
+    fr: >
+      ({
+        scales::label_number(
+          big.mark = ' ',
+          decimal.mark = ','
+        )(haven::zap_label(.data[[var_chr]]))
+        }
+      )
+      s'écarte de la norme.
+      Veuillez vérier la justesse de la valeur.
+      Si la valeur est erronnée, veuillez la corriger.
+      Si la valeur est confirmée, veuillez laisser un commentaire explicatif.
+
+# ==============================================================================
+# household-level
+# ==============================================================================
+
+household:
+
+  # --------------------------------------------------------------------------
+  # [11] housing
+  # --------------------------------------------------------------------------
+
+  # hypothetical rent
+  hh11_q04:
+    en: expected rent to pay per time unit
+    # {labelled::to_character(.data[[var_chr]])}
+    fr: loyer attendu à payer par unité de temps
+    # {labelled::to_character(.data[[var_chr]])}
+  # actual rent
+  hh11_q05:
+    en: rent per time unit
+    # {labelled::to_character(.data[[var_chr]])}
+    fr: loyer par unité de temps
+    # {labelled::to_character(.data[[var_chr]])}
+  # repairs
+  hh11_q09:
+    en: home repairs
+    fr: répartions domestiques
+  # improvements
+  hh11_q11:
+    en: home improvements
+    fr: rénovations
+  #	number rooms
+  hh11_q15:
+    en: number of rooms
+    fr: nombre de chambres
+
+  # --------------------------------------------------------------------------
+  # [12] energy
+  # --------------------------------------------------------------------------
+
+  # electricity expenditure, scaled to daily
+  daily_elec_exp:
+    en: daily electricity expenditure
+    fr: dépense en électricité par jour
+  # number of lightbulbs
+  hh12_q09:
+    en: number of lightbulbs
+    fr: nombre d'ampoules
+  # number of outages in past 7 days
+  hh12_q16:
+    en: number of outages in past 7 days
+    fr: nombre de coupures dans les 7 derniers jours
+  # time to collect fuel, by fuel, time
+  hh12_q24:
+    en: time to collect fuel (by fuel and time unit)
+    fr: temps pour chercher du carburant (par carburant et unité de temps)
+  # fuel expenditure in past 30 days, by fuel and area
+  hh12_q25:
+    en: fuel expenditure in past 30 days (by fuel and area)
+    fr: dépenses en carburant dans les 30 derniers jours (par caburant et unité de temps)
+
+  # --------------------------------------------------------------------------
+  # [13] WASH
+  # --------------------------------------------------------------------------
+
+  # time to get water, by source and area
+  hh13_q04:
+    en: time to get water, by source and area
+    fr: temps nécessire pour chercher de l'eau, par source et unité de temps
+  # refuse disposal expenditure in past 12 months, by method and area
+  hh13_q18a:
+    en: refuse disposal expenditure by time unit
+    fr: dépenses en débarassement d'ordures ménagères par unité de temps
+
+
+
+  # --------------------------------------------------------------------------
+  # [15A] household business
+  # --------------------------------------------------------------------------
+
+  # amount borrowed (per source)
+  hh15a_q18:
+    en: business loan amount (per lender)
+    fr: montant du prêt commercial (par preteur)
+
+# ==============================================================================
+# asset-level
+# ==============================================================================
+
+asset:
+
+  # number owned
+  hh14_q03:
+    en: number of {labelled::to_character(r_assets__id)} owned
+    fr: nombre de {labelled::to_character(r_assets__id)} possédé
+  # amount paid
+  hh14_q05:
+    en: amount paid for {labelled::to_character(r_assets__id)}
+    fr: montant payé pour {labelled::to_character(r_assets__id)}
+  # sale value
+  hh14_q06:
+    en: expected sales value of {labelled::to_character(r_assets__id)}
+    fr: valeur de vente attendu pour {labelled::to_character(r_assets__id)}
+
+# ==============================================================================
+# business-level
+# ==============================================================================
+
+# 🚧 TODO: continue here
+
+business:
+
+  # number of (non-household member) employees
+  hh15b_q19:
+    en: number of employees that aren't household members
+    fr: nombre d'employés qui ne sont pas membre du ménage
+  # profit (by industry)
+  hh15b_q20:
+    en: enterprise profit
+    fr: bénéfice de l'entreprise
+
+# ==============================================================================
+# income-level
+# ==============================================================================
+
+income:
+  desc:
+    en: "income."
+    fr: "revenu."
+  comment_var:
+    en: The value of hh17_q03
+    fr: La valeur de hh17_q03 
+  comment_intro:
+    en: >
+      Outlier identified for income from {labelled::to_character(r_income__id)}.
+    fr:
+      Valeur extrême identifée pour le revenu de {labelled::to_character(hh02_q17_edu_expense__id)}.
+
+# ==============================================================================
+# education expenditure-level
+# ==============================================================================
+
+education_exp:
+  hh02_q17:
+    en: educational expenditure.
+    fr: dépense scolaire.
+  comment_intro:
+    en: >
+      Outlier identified for expenditure on {labelled::to_character(hh02_q17_edu_expense__id)}.
+    fr: >
+      Valeur extrême identifée pour la dépense sur {labelled::to_character(hh02_q17_edu_expense__id)}.

@@ -1,0 +1,21 @@
+type_is_string:
+  en: "{.arg type} must be a single string."
+  fr: "{.arg type} doit être un texte."
+type_is_allowed:
+  en: "{.arg type} must be one of: "
+  fr: "{.arg type} doit être une des valeurs suivantes : "
+deleting:
+  en: "Deleting stale {type} data"
+  fr: "Supression des données obsolètes de {type} en cours"
+downloading:
+  en: "Downloading {type} data"
+  fr: "Téléchargement des données {type} en cours"
+unzipping:
+  en: "Unzipping {type}"
+  fr: "Décompression des données {type} en cours"
+merging:
+  en: "Merging {type} data"
+  fr: "Fusion des données {type} en cours"
+getting_metadata:
+  en: "Downloading team composition"
+  fr: "Téléchargement de la composition des équipes en cours"

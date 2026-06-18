@@ -1,0 +1,60 @@
+r_version:
+  error:
+    desc:
+      en: "Version of R is too old"
+      fr: "Version de R est trop ancienne"
+    details:
+      en: >
+        The minimum version of R required for this project is
+        {r_version_required},
+        but your device has version {r_version_found}.
+      fr:
+        La version minime de R requise pour ce projet est
+        {r_version_required},
+        mais votre appareil a la version {r_version_found}.
+    action:
+      en: >
+        Please install either the minimum or a more modern version of R
+        (i.e., >= {r_version_required}).
+      fr: >
+        Veuillez installer la version minime ou une version plus moderne de R.
+        (i.e., >= {r_version_required}).
+  success:
+    en: R found, with the minimum version for this project.
+    fr: R retrouvé, avec la bonne version pour ce projet
+rtools:
+  error:
+    desc:
+      en: RTools cannot be found. Please install it.
+      fr: RTools est introuvable. Veuillez l'installer.
+    details:
+      en: On Windows, R needs a tool to compile code from source.
+      fr: Sur Windows, R a besoin d'un outil pour compiler le code source.
+    action:
+      en: >
+        Please follow the instructions here for installing RTools:
+        {.url <url_rtools>}
+      fr: >
+        Veuillez suivre les instructions ici pour installer RTools :
+        {.url <url_rtools>}
+  success:
+    en: RTools found.
+    fr: RTools retrouvé.
+quarto:
+  error:
+    desc:
+      en: Quarto cannot be found. Please install it.
+      fr: Quarto est introuvable. Veuillez l'installer.
+    details:
+      en: To create reports, this program needs Quarto.
+      fr: Pour créer des rapports, le programme a besoin de Quarto.
+    action:
+      en: >
+        To install it, follow the instructions here:
+        {.url <url_quarto>}
+      fr: >
+        Pour l'installer, suivre les instructions ici :
+        {.url <url_quarto>}
+  success:
+    en: Quarto found.
+    fr: Quarto retrouvé.

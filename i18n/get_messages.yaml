@@ -1,0 +1,3 @@
+no_yaml_in_dir: 
+  en:  "No YAML file found in the directory."
+  fr: "Aucun fichier YAML dans le répertoire"

@@ -1,0 +1,10 @@
+dir_dne:
+  en: "Directory does not exist."
+  fr: "Le répertoire n'existe pas."
+no_tracker:
+  error:
+    en: "There are {n_trackers} tracker files in {.path {dir}}"
+    fr: "Il y a {n_trackers} fichiers de suivi dans {.path {dir}}"
+  info:
+    en: "Files found: {files_found_txt}"
+    fr: "Fichiers retrouvés : {files_found_txt}"
