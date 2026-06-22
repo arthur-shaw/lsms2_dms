@@ -80,7 +80,7 @@ dfs_filtered <- filter_dfs(
 completed_interviews <- identify_completed(
   main_df = dfs_filtered[["households"]],
   statuses = suso_statuses_to_reject,
-  is_complete_expr = s12q01 == 1
+  is_complete_expr = interview_result == 1
 )
 
 # stop program if there are no completed interviews
