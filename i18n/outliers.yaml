@@ -331,3 +331,12 @@ non_food_30d:
     en: amount spent on {labelled::to_character(non_food_30_days__id)}
     fr: montant dépensé sur {labelled::to_character(non_food_30_days__id)}
 
+# ==============================================================================
+# 6-month non-food-level
+# ==============================================================================
+
+non_food_6m:
+  hh09c_q03:
+    en: amount spent on {labelled::to_character(non_food_6_months__id)}
+    fr: montant dépensé sur {labelled::to_character(non_food_6_months__id)}
+
