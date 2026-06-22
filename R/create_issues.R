@@ -1277,7 +1277,13 @@ create_outlier_issues <- function(
     ~ var,
     "ag13_q03", # num workers
     "hourly_rate", # computed hourly rate
-  )
+  ) |>
+	dplyr::rowwise() |>
+  dplyr::mutate(
+    by = "r_aglabor_nonhh__id",
+    desc = get_msg("outliers", "livestock_non_hhold_labor", var)
+  ) |>
+  dplyr::ungroup()
 
   issues_livestock_labor <- purrr::pmap(
     .l = livestock_labor_lvl_specs,
@@ -1287,25 +1293,26 @@ create_outlier_issues <- function(
         daily_rate_var = ag13_q06,
         hours_per_day_var = ag13_q05b
       ),
-      dfs_full = add_hourly_rate(
+      df_full = add_hourly_rate(
         df = dfs_full$r_aglabor_nonhh,
         daily_rate_var = ag13_q06,
         hours_per_day_var = ag13_q05b
       ),
       var = !!rlang::sym(..1),
-      by = r_aglabor_nonhh, # livestock
+      by = ..2, # livestock
       exclude = NULL,
       transform = "log",
       bounds = "upper",
       type = 2,
-      # TODO: compose description
-      desc = "",
-      # TODO: compose comment
-      comment = "",
+      desc = glue::glue(desc),
+      comment = paste(
+        glue::glue(comment_intro),
+        glue::glue(comment_var),
+        comment_body
+      ),
       comment_question = TRUE
     )
   )
-
 
   # ----------------------------------------------------------------------------
   # ag equipment level

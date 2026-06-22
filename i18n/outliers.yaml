@@ -611,3 +611,30 @@ livestock_cost:
       montant dépensé sur le traitement curatif pour
       {labelled::to_character(lvstk_id__id)}
 
+# ==============================================================================
+# livestock non-household labor roster
+# ==============================================================================
+
+livestock_non_hhold_labor:
+
+  # num workers
+  ag13_q03:
+    en: >
+      number of
+      {labelled::to_character(r_aglabor_nonhh__id)}
+      working on livestock production activities
+    fr: >
+      nombre de
+      {labelled::to_character(r_aglabor_nonhh__id)}
+      travaillant sur les activités de l'élevage
+  # computed hourly rate
+  hourly_rate:
+    en: >
+      hourly rate for
+      {labelled::to_character(r_aglabor_nonhh__id)}
+      working on livestock
+    fr: >
+      prix horaire pour les
+      {labelled::to_character(r_aglabor_nonhh__id)}
+      travaillant dans les activités de l'élevage
+
