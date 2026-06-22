@@ -539,8 +539,10 @@ create_outlier_issues <- function(
     # [2] education
     # --------------------------------------------------------------------------
     "hh02_q14", "NULL", # scholarship
-    # health
-    "hh03a_q13", "NULL", #meidcal transport
+    # --------------------------------------------------------------------------
+    # [ 3A - 3C] health
+    # --------------------------------------------------------------------------
+    "hh03a_q13", "NULL", # medical transport
     "hh03a_q15", "NULL", # consultation costs
     "hh03a_q18", "NULL", # medicines
     "hh03a_q23", "NULL", # overnight health facility stays

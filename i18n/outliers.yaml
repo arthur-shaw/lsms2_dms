@@ -197,3 +197,78 @@ medical_service_exp:
     en: amount paid for transport to/from place where {labelled::to_character(services_roster__id)} received
     fr: montant payé pour transport aller/retour au lieu où {labelled::to_character(services_roster__id)} reçu(e)
 
+# ==============================================================================
+# member-level
+# ==============================================================================
+
+member:
+
+# ------------------------------------------------------------------------------
+# [2] education
+# ------------------------------------------------------------------------------
+
+  hh02_q14:
+    en: scholarship amount
+    fr: montant de la bourse
+# ------------------------------------------------------------------------------
+# [3A - 3C] health
+# ------------------------------------------------------------------------------
+
+  hh03a_q13:
+    en: transport to/from a consultation
+    fr: transport aller-retour vers une consultation
+  hh03a_q15:
+    en: consultation costs
+    fr: frais de consultation
+  hh03a_q18:
+    en: medicine, vitamins, and minerals
+    fr: médicaments, vitamines, et minéraux
+  hh03a_q23:
+    en: overnight stay in a hospital or health facility
+    fr: nuitée(s) dans un hôpital ou établissement médical
+  hh03a_q25:
+    en: transport to/from a hospital or health facility
+    fr: transport aller-retour vers un hôpital ou établissement médical
+
+# ------------------------------------------------------------------------------
+# [3D] family planning
+# ------------------------------------------------------------------------------
+
+  hh03d_q08:
+    en: number of antenatal visits
+    fr: nombre de visites prénatales
+
+# ------------------------------------------------------------------------------
+# [4] labor
+# ------------------------------------------------------------------------------
+
+  hh04_q34:
+    en: number of hours worked last week
+    fr: nombre d'heures travaillées la semaine dernière
+  hh04_q40_amount:
+    en: earnings
+    fr: revenu
+  hh04_q41_amount:
+    en: profit
+    fr: bénéfice
+
+# ------------------------------------------------------------------------------
+# [7] FAFH
+# ------------------------------------------------------------------------------
+
+  hh07_q04:
+    en: breakfast away from home
+    fr: pétit déjeuner en dehors du ménage
+  hh07_q06:
+    en: lunch away from home
+    fr: déjeuner en dehors du ménage
+  hh07_q08:
+    en: dinner away from home
+    fr: dîner en dehors du ménage
+  hh07_q14:
+    en: non-alcolic drinks away from home
+    fr: boissons sans alcool en dehors du ménage
+  hh07_q16:
+    en: alcoholic drinks away from home
+    fr: boissons alcoolisées en dehors du ménage
+
