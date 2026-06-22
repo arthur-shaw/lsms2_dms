@@ -136,10 +136,10 @@ construct_paths <- function() {
   # ============================================================================
 
   dirs$scripts <- list(
-    get_data = fs::path(dirs$R, "01_get_data.R"),
-    validate = fs::path(dirs$R, "02_validate.R"),
-    reject = fs::path(dirs$R, "02_reject.R"),
-    monitor = fs::path(dirs$R, "03_monitor.R")
+    get_data = fs::path(dirs$r, "01_get_data.R"),
+    validate = fs::path(dirs$r, "02_validate.R"),
+    reject = fs::path(dirs$r, "02_reject.R"),
+    monitor = fs::path(dirs$r, "03_monitor.R")
   )
 
   # ============================================================================
