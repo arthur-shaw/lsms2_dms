@@ -860,7 +860,7 @@ create_outlier_issues <- function(
     "amt_seed_temp_non_veg", "r_crop__id, ag03_q05_unit", # temporary, non-veg
     "amt_seed_temp_veg", "r_crop__id, ag03_q10_unit", # temporary, non-veg
     "num_plants", "r_crop__id", # number trees/plans per area, by crop
-    "amt_seed_tree_perm", "r_crop__id", "ag03_q21_unit", # tree / permanent
+    "amt_seed_tree_perm", "r_crop__id, ag03_q21_unit", # tree / permanent
 
   )
 
