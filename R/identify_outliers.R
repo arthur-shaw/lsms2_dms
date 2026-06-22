@@ -491,7 +491,7 @@ identify_outliers <- function(
         dplyr::mutate(
           # first, construct the series of comma-separated coordinates
           issue_loc = glue::glue_collapse(
-            x = dplyr::pick(roster_vars),
+            x = dplyr::pick(dplyr::all_of(roster_vars)),
             sep = ", "
           ),
           # then, enclose this series of cordinates in square brackets
