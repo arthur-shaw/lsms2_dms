@@ -94,7 +94,9 @@ resolve_by <- function(by, df) {
   by_vars <- by_quo |>
     # evaluate the expression in the context of the data frame specified in `df`
     # selecting matching columns
-    tidyselect::eval_select(data = df) |>
+    (\(x) suppressWarnings(
+      tidyselect::eval_select(data = df, expr = x)
+    ))() |>
     # capture the names of matching columns in character vector
     names()
 
