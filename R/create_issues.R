@@ -371,8 +371,8 @@ create_outlier_issues <- function(
   issues_asset_lvl <- purrr::pmap(
     .l = asset_lvl_specs,
     .f = ~ identify_outliers(
-      df_to_check = add_daily_rates(dfs_filtered$r_assets),
-      df_full = add_daily_rates(dfs_full$r_assets),
+      df_to_check = dfs_filtered$r_assets,
+      df_full = dfs_full$r_assets,
       var = !!rlang::sym(..1),
       by = ..2,
       exclude = NULL,
