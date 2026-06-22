@@ -71,7 +71,10 @@ create_attributes <- function(
       "hh09d_q02",
   ) |>
   # prepend name of list containing the target data frame
-	dplyr::mutate(df_name = paste0("dfs_filtered$", df_name))
+	dplyr::mutate(
+    df_list = "dfs_filtered",
+    df_name = df_name
+  )
 
   attribs_consumption <- purrr::pmap(
     .l = conso_spec,
@@ -121,6 +124,7 @@ create_attributes <- function(
 #'
 #' @param attrib_name Character. Name of attribute.
 #' @param fn_name Character. Name of `{susoreview}` function to use.
+#' @param df_list_name Character. Name of the list of data frames
 #' @param df_name Character. Name of the data frame.
 #' @param condition Character. Expression used by the function.
 #' @param attrib_vars Character. Regular expression for selecting variables used
@@ -134,6 +138,7 @@ create_attributes <- function(
 create_attribute_from_spec <- function(
   attrib_name,
   fn_name,
+  df_list_name,
   df_name,
   condition,
   attrib_vars
@@ -164,13 +169,15 @@ create_attribute_from_spec <- function(
     )
 
   }
-  
+
   # fetch the matching data frame; return NULL if match not found
-  df <- base::get0(
-    x = df_name,
+  df_list <- base::get0(
+    x = df_list_name,
     envir = rlang::caller_env(),
     ifnotfound = NULL
   )
+
+  df <- df_list[[df_name]]
 
   # check whether the data frame values returned is NULL
   if (base::is.null(df)) {
