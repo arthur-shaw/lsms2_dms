@@ -36,6 +36,9 @@ household_qnr_expr <- ""
 # value of the questionnaire variable
 household_qnr_var  <- ""
 
+# name of the member-level file, as it appears in Designer and without `.dta`
+members_roster_var <- "t0_hhroster"
+
 # -----------------------------------------------------------------------------
 # Community questionnaire
 # -----------------------------------------------------------------------------

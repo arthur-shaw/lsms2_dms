@@ -6,6 +6,8 @@
 #' @param dir Character. Directory containing Stata files.
 #' @param hhold_varname Character. Questionnaire variable name for main,
 #' household-level data.
+#' @param members_roster_var Character. Name of the members-level data file,
+#' without `.dta` extension.
 #'
 #' @return List of data frames.
 #' Names correspond to file names without extension.
@@ -16,7 +18,8 @@
 #' @importFrom haven read_dta
 ingest_dfs <- function(
   dir,
-  hhold_varname
+  hhold_varname,
+  members_roster_var
 ) {
 
   dfs_list <-
@@ -36,7 +39,13 @@ ingest_dfs <- function(
     # make the file name the name of each path
     purrr::set_names(nm = ~ fs::path_ext_remove(fs::path_file(.x))) |>
     # rename the list element corresponding to the main, household-level data
-    purrr::set_names(nm = ~ ifelse(.x == hhold_varname, "households", .x)) |>
+    purrr::set_names(
+      nm = ~ dplyr::case_when(
+        .x == hhold_varname ~ "households",
+        .x == members_roster_var ~ "members",
+        .default = .x
+      )
+    ) |>
     # replace the path with the data
     purrr::map(haven::read_dta)
 

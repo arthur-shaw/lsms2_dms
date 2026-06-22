@@ -27,7 +27,8 @@ combined_data_dir <- dirs$data$household$combined
 
 dfs_full <- ingest_dfs(
   dir = combined_data_dir,
-  hhold_varname = household_qnr_var
+  hhold_varname = household_qnr_var,
+  members_roster_var = members_roster_var
 )
 
 # ==============================================================================
