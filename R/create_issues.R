@@ -416,7 +416,7 @@ create_outlier_issues <- function(
         glue::glue(comment_intro),
         glue::glue(comment_var),
         # show the outlier amount
-        # using the French thousands and decimal marks
+        # using the appropriate thousands and decimal marks
         # evaluating the data in the context of the outlier function
         comment_body
       ),
@@ -478,7 +478,7 @@ create_outlier_issues <- function(
         # evaluate before the outlier function
         glue::glue(comment_var),
         # show the outlier amount
-        # using the French thousands and decimal marks
+        # using the appropriate thousands and decimal marks
         # evaluating the data in the context of the outlier function
         comment_body
       ),
@@ -513,7 +513,7 @@ create_outlier_issues <- function(
         glue::glue(comment_intro),
         glue::glue(comment_var),
         # show the outlier amount
-        # using the French thousands and decimal marks
+        # using the appropriate thousands and decimal marks
         # evaluating the data in the context of the outlier function
         comment_body
       ),
@@ -582,7 +582,7 @@ create_outlier_issues <- function(
         glue::glue(comment_intro),
         glue::glue(comment_var),
         # show the outlier amount
-        # using the French thousands and decimal marks
+        # using the appropriate thousands and decimal marks
         # evaluating the data in the context of the outlier function
         comment_body
       ),
@@ -634,7 +634,7 @@ create_outlier_issues <- function(
         glue::glue(comment_intro),
         glue::glue(comment_var),
         # show the outlier amount
-        # using the French thousands and decimal marks
+        # using the appropriate thousands and decimal marks
         # evaluating the data in the context of the outlier function
         comment_body
       ),
