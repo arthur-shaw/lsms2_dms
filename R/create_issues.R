@@ -618,12 +618,17 @@ create_outlier_issues <- function(
 
   food_lvl_specs <- tibble::tribble(
     ~ var, ~ by,
-    "hh08_q05_amount", "hh08_q05_unit", # Total quantity for unit
-    "hh08_q10_amount", "hh08_q10_unit", # Quantity purchased for unit
-    "unit_purchase_price", "hh08_q10_unit",
+    # total quantity for unit
+    "hh08_q05_amount",
+      to_comma_sep_str(c("hh08_q05_unit", "food_consumption_at_home__id")),
+    # quantity purhased
+    "hh08_q10_amount",
+      to_comma_sep_str(c("hh08_q10_unit", "food_consumption_at_home__id")),
+    # unit price of puchase
+    "unit_purchase_price",
+      to_comma_sep_str(c("hh08_q10_unit", "food_consumption_at_home__id")),
   ) |>
 	dplyr::rowwise() |>
-  # TODO: update message reference
   dplyr::mutate(desc = get_msg("outliers", "food", var)) |>
   dplyr::ungroup()
 
