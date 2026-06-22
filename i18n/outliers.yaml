@@ -366,3 +366,18 @@ seed_use_acquisition:
       ({labelled::to_character(r_seed_type__id)})
       en (labelled::to_character(ag05_q06_unit))
 
+# ==============================================================================
+# crop-input roster
+# ==============================================================================
+
+crop_inputs:
+  ag06_q03_quantity:
+    en: >
+      quantity of
+      {labelled::to_character(r_crop_inputs__id)}
+      in {labelled::to_character(ag06_q03_unit)}
+    fr: >
+      quantité de
+      {labelled::to_character(r_crop_inputs__id)}
+      en {labelled::to_character(ag06_q03_unit)}
+

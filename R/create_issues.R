@@ -943,25 +943,41 @@ create_outlier_issues <- function(
   # crop-input level
   # ----------------------------------------------------------------------------
 
-  issues_input_purchase <- identify_outliers(
-    df_to_check = dfs_filtered$r_crop_inputs,
-    df_full = dfs_full$r_crop_inputs,
-    var = ag06_q03_quantity,
-    by = c(
+  crop_input_specs <- tibble::tribble(
+    ~ var, ~ by,
+    "ag06_q03_quantity", to_comma_sep_str(
+      c(
       # crop input
-      r_crop_inputs,
+        "r_crop_inputs__id",
       # unit
-      ag06_q03_unit
-    ),
+        "ag06_q03_unit"
+      )
+    )
+  ) |>
+	dplyr::rowwise() |>
+  dplyr::mutate(desc = get_msg("outliers", "crop_inputs", var)) |>
+  dplyr::ungroup()
+	
+
+  issues_input_purchase <- purrr::pmap(
+    .l = crop_input_specs,
+    .f = ~ identify_outliers(
+      df_to_check = dfs_filtered$r_crop_inputs,
+      df_full = dfs_full$r_crop_inputs,
+      var = !!rlang::sym(..1),
+      by = ..2,
     exclude = NULL,
     transform = "log",
     bounds = "upper",
     type = 2,
-    # TODO: compose description
-    desc = "",
-    # TODO: compose comment
-    comment = "",
+      desc = glue::glue(desc),
+      comment = paste(
+        glue::glue(comment_intro),
+        glue::glue(comment_var),
+        comment_body
+      ),
     comment_question = TRUE
+    )
   )
 
   # ----------------------------------------------------------------------------
