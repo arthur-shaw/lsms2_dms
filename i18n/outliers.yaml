@@ -313,3 +313,12 @@ food:
       {labelled::to_character(food_consumption_at_home__id)}
       (price / {labelled::to_character(hh08_q10_unit)})
 
+# ==============================================================================
+# 7-day non-food-level
+# ==============================================================================
+
+non_food_7d:
+  hh09a_q03:
+    en: amount spent on {labelled::to_character(non_food_7_days__id)}
+    fr: montant dépensé sur {labelled::to_character(non_food_7_days__id)}
+

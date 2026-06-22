@@ -660,22 +660,38 @@ create_outlier_issues <- function(
   # 7-day non-food expenditure
   # ----------------------------------------------------------------------------
 
-  issues_non_food_7d <- identify_outliers(
+  non_food_7d_specs <- tibble::tribble(
+    ~ var, ~ by,
+    "hh09a_q03", "non_food_7_days__id", 
+  ) |>
+	dplyr::rowwise() |>
+  # TODO: update message reference
+  dplyr::mutate(desc = get_msg("outliers", "non_food_7d", var)) |>
+  dplyr::ungroup()
+
+  issues_non_food_7d <- purrr::pmap(
+    .l = non_food_7d_specs,
+    .f = ~ identify_outliers(
     df_to_check = dfs_filtered$non_food_7_days,
     df_full = dfs_full$non_food_7_days,
-    var = hh09a_q03,
-    by = non_food_7_days__id,
+      var = !!rlang::sym(..1),
+      by = ..2,
     exclude = NULL,
     transform = "log",
     n_mad = 2,
     min_obs = 30,
     bounds = "upper",
     type = 2,
-    # TODO: compose message later
-    desc = "",
-    comment = "",
+      desc = glue::glue(desc),
+      comment = paste(
+        glue::glue(comment_intro),
+        glue::glue(comment_var),
+        comment_body
+      ),
     comment_question = TRUE
+    )
   )
+  
 
   # ----------------------------------------------------------------------------
   # 30-day non-food expenditure
