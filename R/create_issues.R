@@ -497,6 +497,10 @@ create_outlier_issues <- function(
     ~ var, ~ by,
     "hh03a_q31", "services_roster__id", # medical service fees
     "hh03a_q33", "services_roster__id", # transport to/from medical service venue
+  ) |>
+	dplyr::rowwise() |>
+  dplyr::mutate(desc = get_msg("outliers", "medical_service_exp", var)) |>
+	dplyr::ungroup()
 
   issues_medical_services_exp_lvl <- purrr::pmap(
     .l = medical_services_exp_lvl_specs,

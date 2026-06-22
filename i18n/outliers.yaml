@@ -182,3 +182,18 @@ education_exp:
       Outlier identified for expenditure on {labelled::to_character(hh02_q17_edu_expense__id)}.
     fr: >
       Valeur extrême identifée pour la dépense sur {labelled::to_character(hh02_q17_edu_expense__id)}.
+
+# ==============================================================================
+# medical services expenditure
+# ==============================================================================
+
+medical_service_exp:
+  # medical service fees
+  hh03a_q31:
+    en: amount paid for {labelled::to_character(services_roster__id)}
+    fr: montant payé pour {labelled::to_character(services_roster__id)}
+  # transport to/from medical service venue
+  hh03a_q33:
+    en: amount paid for transport to/from place where {labelled::to_character(services_roster__id)} received
+    fr: montant payé pour transport aller/retour au lieu où {labelled::to_character(services_roster__id)} reçu(e)
+
