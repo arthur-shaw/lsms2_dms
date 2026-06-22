@@ -469,7 +469,7 @@ create_outlier_issues <- function(
       df_to_check = dfs_filtered$hh02_q17_edu_expense,
       df_full = dfs_full$hh02_q17_edu_expense,
       var = !!rlang::sym(..1),
-      by = !!rlang::sym(..2),
+      by = ..2,
       exclude = NULL,
       transform = "log",
       bounds = "upper",
