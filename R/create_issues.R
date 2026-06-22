@@ -563,8 +563,9 @@ create_outlier_issues <- function(
     "hh07_q04", "NULL", # Breakfast away from home
     "hh07_q06", "NULL",	# Lunch away from home
     "hh07_q08", "NULL", # Dinner away from home
-    "hh07_q10", "NULL", # Snack away from home
-    "hh07_q12", "NULL", # Hot drinks away from home
+    # ⚠️ note: this uses the wrong variable name as it appears in TZ data
+    "hh07_q010", "NULL", # Snack away from home
+    "hh07_q012", "NULL", # Hot drinks away from home
     "hh07_q14", "NULL", # Non-alcoholic drinks away from home
     "hh07_q16", "NULL", # Alcoholic drinks away from home
   ) |>
