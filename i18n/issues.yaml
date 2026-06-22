@@ -68,12 +68,12 @@ no_non_food:
     fr: Aucune consommation de produits non-alimentaires.
   comment:
     en: >
-      ERROR: {no_non_food}.
+      ERROR: {desc_no_non_food}.
       That is, no consumption at all, neither in the past 7 days, 30 days, 6 months, or 12 months.
       This is highly unlikely.
       Please check and correct answers in sections 9A, 9B, 9C, and 9D.
     fr: >
-      ERREUR: {no_non_food}.
+      ERREUR: {desc_no_non_food}.
       C'est à dire, aucune consommation du tout, ni dans les derniers 7 jours, 30 jours, 6 mois, ni 12 mois.
       Ceci est hautement improbable.
       Veuillez vérifer et corriger les réponses dans les sections 9A, 9B, 9C, et 9D.
