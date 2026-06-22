@@ -414,6 +414,9 @@ identify_outliers <- function(
 
     df_issues <- df_outliers |>
       dplyr::mutate(
+        # recast from potentially haven class (if has special values)
+        # to simple numeric so that can construct the comment properly
+        {{var}} := as.numeric({{var}}),
         issue_type = type,
         issue_desc = glue::glue(
           "{desc}",
@@ -505,6 +508,9 @@ identify_outliers <- function(
 
     df_var_lvl_comments <- df_outliers_w_loc |>
       dplyr::mutate(
+        # recast from potentially haven class (if has special values)
+        # to simple numeric so that can construct the comment properly
+        {{var}} := as.numeric({{var}}),
         issue_type = 2,
         issue_desc = glue::glue(
           "{desc}",
