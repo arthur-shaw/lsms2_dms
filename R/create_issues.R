@@ -313,16 +313,16 @@ create_outlier_issues <- function(
     "hh12_q16", "NULL", # number of outages in past 7 days
     "hh12_q24", "hh12_q23, hh12_q24_tu", # time to collect fuel, by fuel, time
     "hh12_q25", 
-      to_comma_sep_str("hh12_q23", by_area),
+      to_comma_sep_str(c("hh12_q23", by_area)),
       # fuel expenditure in past 30 days, by fuel and area
     # --------------------------------------------------------------------------
     # [13] WASH
     # --------------------------------------------------------------------------
     "hh13_q04",
-      to_comma_sep_str("hh13_q02", by_area),
+      to_comma_sep_str(c("hh13_q02", by_area)),
       # time to get water, by source and area
     "hh13_q18a",
-      to_comma_sep_str("hh13_q17", by_area),
+      to_comma_sep_str(c("hh13_q17", by_area)),
       # refuse disposal expenditure in past 12 months, by method and area
     # --------------------------------------------------------------------------
     # [15A] household business
