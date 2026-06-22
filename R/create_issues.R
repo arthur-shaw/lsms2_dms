@@ -768,21 +768,35 @@ create_outlier_issues <- function(
   # 12-month non-food expenditure
   # ----------------------------------------------------------------------------
 
-  issues_non_food_12m <- identify_outliers(
+  non_food_12m_specs <- tibble::tribble(
+    ~ var, ~ by,
+    "hh09d_q03", "non_food_12_months__id", 
+  ) |>
+	dplyr::rowwise() |>
+  dplyr::mutate(desc = get_msg("outliers", "non_food_12m", var)) |>
+  dplyr::ungroup()
+
+  issues_non_food_12m <- purrr::pmap(
+    .l = non_food_12m_specs,
+    .f = ~ identify_outliers(
     df_to_check = dfs_filtered$non_food_12_months,
     df_full = dfs_full$non_food_12_months,
-    var = hh09d_q03,
-    by = non_food_12_months__id,
+      var = !!rlang::sym(..1),
+      by = ..2,
     exclude = NULL,
     transform = "log",
     n_mad = 2,
     min_obs = 30,
     bounds = "upper",
     type = 2,
-    # TODO: compose message later
-    desc = "",
-    comment = "",
+      desc = glue::glue(desc),
+      comment = paste(
+        glue::glue(comment_intro),
+        glue::glue(comment_var),
+        comment_body
+      ),
     comment_question = TRUE
+    )
   )
 
   # ----------------------------------------------------------------------------
