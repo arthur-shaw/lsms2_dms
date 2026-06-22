@@ -892,35 +892,51 @@ create_outlier_issues <- function(
 
   }
 
-  issues_seed_purchase <- identify_outliers(
+  seed_lvl_specs  <- tibble::tribble(
+    ~ var, ~ by,
+    "unit_price", to_comma_sep_str(
+      c(
+        # seed type
+        "r_seed05__id", "r_seed_type__id",
+        # purchase unit
+        "ag05_q06_unit",
+        # whether used coupon/voucher when purchasing
+        "ag05_q08"
+      )
+    )
+  ) |>
+	dplyr::rowwise() |>
+  dplyr::mutate(desc = get_msg("outliers", "seed_use_acquisition", var)) |>
+  dplyr::ungroup()
+
+
+  issues_seed_purchase <- purrr::pmap(
+    .l = seed_lvl_specs,
+    .f = ~ identify_outliers(
     df_to_check = add_unit_price(
       df = dfs_filtered$r_seed_type,
       value = ag05_q07,
       quantity = ag05_q06_amount
     ),
-    df_full = add_unit_price_seed(
+      df_full = add_unit_price(
       df = dfs_full$r_seed_type,
       value = ag05_q07,
       quantity = ag05_q06_amount
     ),
-    var = unit_price,
-    by = c(
-      # seed type
-      r_seeds_05__id, r_seed_type__id,
-      # purchase unit
-      ag05_q06_unit,
-      # whether used coupon/voucher when purchasing
-      ag05_q08
-    ),
+      var = !!rlang::sym(..1),
+      by = ..2,
     exclude = NULL,
     transform = "log",
     bounds = "upper",
     type = 2,
-    # TODO: compose description
-    desc = "",
-    # TODO: compose comment
-    comment = "",
+      desc = glue::glue(desc),
+      comment = paste(
+        glue::glue(comment_intro),
+        glue::glue(comment_var),
+        comment_body
+      ),
     comment_question = TRUE
+    )
   )
 
   # ----------------------------------------------------------------------------
