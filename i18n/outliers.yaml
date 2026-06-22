@@ -518,6 +518,61 @@ livestock:
       qui sont porté(e)s disparu(e)
 
   # ----------------------------------------------------------------------------
+  # products
+  # ----------------------------------------------------------------------------
+
+  # num clutching periods
+  ag12_q03:
+    en: >
+      number of clutching periods for
+      {labelled::to_character(lv_roster__id)}
+    fr: >
+      nombre de périodes de portage pour
+      {labelled::to_character(lv_roster__id)}
+  # num laying eggs
+  ag12_q04:
+    en: >
+      number of eggs laid by
+      {labelled::to_character(lv_roster__id)}
+    fr: >
+      nombre d'œufs pondus par les
+      {labelled::to_character(lv_roster__id)}
+  # num eggs per clutching period
+  ag12_q05:
+    en: >
+      number of eggs per clutching period for the
+      {labelled::to_character(lv_roster__id)}
+    fr: >
+      nombre d'œufs pondus par période de portage par les
+      {labelled::to_character(lv_roster__id)}
+  # actually number of liters per milked animal
+  unit_price_liters_per_anim:
+    en: >
+      number of liters of milk per milked
+      {labelled::to_character(lv_roster__id)}
+    fr: >
+      nombre de litres de lait
+      {labelled::to_character(lv_roster__id)}
+      trait
+  # unit price of milk sold
+  unit_price_milk_sold:
+    en: >
+      unit price of milk sold from the
+      {labelled::to_character(lv_roster__id)}
+    fr:
+      prix unitaire de lait vendu provenant des
+      {labelled::to_character(lv_roster__id)}
+  # liters of milk used as inputs for other products
+  ag12_q19:
+    en: >
+      number liters of milk from
+      {labelled::to_character(lv_roster__id)}
+      used as inputs for other milk products
+    fr: >
+      nombre de litres de lait provenant des
+      {labelled::to_character(lv_roster__id)}
+      utilisé comme intrant pour d'autres produits laitiers
+
 # ==============================================================================
 # livestock-cost-level
 # ==============================================================================

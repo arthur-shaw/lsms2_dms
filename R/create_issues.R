@@ -1198,13 +1198,20 @@ create_outlier_issues <- function(
   # different survey section, same livestocks data frame
 
   livestock_products_lvl_specs <- tibble::tribble(
+    ~ var,
     "ag12_q03", # num clutching periods
     "ag12_q04", # num laying eggs
     "ag12_q05", # num eggs per clutching period
     "unit_price_liters_per_anim", # actually number of liters per milked animal
     "unit_price_milk_sold", # unit price of milk sold
     "ag12_q19",
-  )
+  ) |>
+	dplyr::rowwise() |>
+  dplyr::mutate(
+    by = "lv_roster__id",
+    desc = get_msg("outliers", "livestock", var)
+  ) |>
+  dplyr::ungroup()
 
   issues_livestock_products <- purrr::pmap(
     .l = livestock_products_lvl_specs,
@@ -1221,7 +1228,7 @@ create_outlier_issues <- function(
           suffix = "milk_sold"
         )
       ,
-      dfs_full = dfs_full$lv_roster |>
+      df_full = dfs_full$lv_roster |>
         add_unit_price(
           value = ag12_q13,
           quantity = ag12_q12,
@@ -1234,15 +1241,17 @@ create_outlier_issues <- function(
         )
       ,
       var = !!rlang::sym(..1),
-      by = lv_roster__id, # livestock
+      by = ..2, # livestock
       exclude = NULL,
       transform = "log",
       bounds = "upper",
       type = 2,
-      # TODO: compose description
-      desc = "",
-      # TODO: compose comment
-      comment = "",
+      desc = glue::glue(desc),
+      comment = paste(
+        glue::glue(comment_intro),
+        glue::glue(comment_var),
+        comment_body
+      ),
       comment_question = TRUE
     )
   )
