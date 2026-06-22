@@ -1109,7 +1109,8 @@ create_outlier_issues <- function(
 
   add_animal_counts <- function(
     costs_df,
-    anim_df
+    anim_df,
+    num_anim
   ) {
 
     num_anim_per_group <- anim_df |>
@@ -1117,7 +1118,7 @@ create_outlier_issues <- function(
       # and that aggregates detailed livestock to livestock groups
       dplyr::mutate(
         new_anim_id = dplyr::recode_values(
-          x = .data$livestock__id,
+          x = .data$lv_roster__id,
           # recodes from old ID to new ID
           # where multiple
           c(11, 12, 13) ~ 1,
@@ -1132,14 +1133,14 @@ create_outlier_issues <- function(
       ) |>
       # compute a sum within each newly created livestock group
       dplyr::summarise(
-        num_animals = sum(num, na.rm = TRUE),
+        num_animals = sum({{num_anim}}, na.rm = TRUE),
         .by = new_anim_id
       )
 
     costs_w_anim_counts <- dplyr::left_join(
       x = costs_df,
-      y = anim_df,
-      by = c("lvstk_id__id" == "new_anim_id")
+      y = num_anim_per_group,
+      by = c("lvstk_id__id" = "new_anim_id")
     )
 
     return(costs_w_anim_counts)
@@ -1152,29 +1153,39 @@ create_outlier_issues <- function(
     "ag11_q06", # breeding
     "ag11_q07", # preventative treatment
     "ag11_q08", # curative treatment
-  )
+  ) |>
+	dplyr::rowwise() |>
+  dplyr::mutate(
+    by = "lvstk_id__id",
+    desc = get_msg("outliers", "livestock_cost", var)
+  ) |>
+  dplyr::ungroup()
 
   issues_livestock_costs <- purrr::pmap(
     .l = livestock_costs_lvl_specs,
     .f = ~ identify_outliers(
       df_to_check = add_animal_counts(
         costs_df = dfs_filtered$lvstk_id,
-        anim_df = dfs_filtered$lv_roster
+        anim_df = dfs_filtered$lv_roster,
+        num_anim = ag10_q04
       ),
-      dfs_full = add_animal_counts(
+      df_full = add_animal_counts(
         costs_df = dfs_full$lvstk_id,
-        anim_df = dfs_full$lv_roster
+        anim_df = dfs_full$lv_roster,
+        num_anim = ag10_q04
       ),
       var = !!rlang::sym(..1),
-      by = lvstk_id__id, # livestock group in costs roster
+      by = ..2, # livestock group in costs roster
       exclude = NULL,
       transform = "log",
       bounds = "upper",
       type = 2,
-      # TODO: compose description
-      desc = "",
-      # TODO: compose comment
-      comment = "",
+      desc = glue::glue(desc),
+      comment = paste(
+        glue::glue(comment_intro),
+        glue::glue(comment_var),
+        comment_body
+      ),
       comment_question = TRUE
     )
   )

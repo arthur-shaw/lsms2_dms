@@ -518,3 +518,41 @@ livestock:
       qui sont porté(e)s disparu(e)
 
   # ----------------------------------------------------------------------------
+# ==============================================================================
+# livestock-cost-level
+# ==============================================================================
+
+livestock_cost:
+  # food
+  ag11_q05:
+    en: >
+      amount spent on food for
+      {labelled::to_character(lvstk_id__id)}
+    fr: >
+      montant dépensé pour la nourriture de
+      {labelled::to_character(lvstk_id__id)}
+  # breeding
+  ag11_q06:
+    en: >
+      amount spent for breeding
+      {labelled::to_character(lvstk_id__id)}
+    fr: >
+      montant dépensé pour les frais de reproduction de
+      {labelled::to_character(lvstk_id__id)}
+  # preventative treatment
+  ag11_q07:
+    en: >
+      amount spent on preventative treatment for
+      {labelled::to_character(lvstk_id__id)}
+    fr: >
+      montant dépensé sur le traitement préventif des
+      {labelled::to_character(lvstk_id__id)}
+  # curative treatment
+  ag11_q08:
+    en: >
+      amount spent on curative treatment for
+      {labelled::to_character(lvstk_id__id)}
+    fr:
+      montant dépensé sur le traitement curatif pour
+      {labelled::to_character(lvstk_id__id)}
+
