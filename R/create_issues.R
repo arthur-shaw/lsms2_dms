@@ -492,9 +492,8 @@ create_outlier_issues <- function(
 
   medical_services_exp_lvl_specs <- tibble::tribble(
     ~ var, ~ by,
-    "s03aq31", "services_roster__id", # medical service fees
-    "s03aq33", "services_roster__id", # transport to/from medical service venue
-  )
+    "hh03a_q31", "services_roster__id", # medical service fees
+    "hh03a_q33", "services_roster__id", # transport to/from medical service venue
 
   issues_medical_services_exp_lvl <- purrr::pmap(
     .l = medical_services_exp_lvl_specs,
