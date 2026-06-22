@@ -672,23 +672,23 @@ create_outlier_issues <- function(
   issues_non_food_7d <- purrr::pmap(
     .l = non_food_7d_specs,
     .f = ~ identify_outliers(
-    df_to_check = dfs_filtered$non_food_7_days,
-    df_full = dfs_full$non_food_7_days,
+      df_to_check = dfs_filtered$non_food_7_days,
+      df_full = dfs_full$non_food_7_days,
       var = !!rlang::sym(..1),
       by = ..2,
-    exclude = NULL,
-    transform = "log",
-    n_mad = 2,
-    min_obs = 30,
-    bounds = "upper",
-    type = 2,
+      exclude = NULL,
+      transform = "log",
+      n_mad = 2,
+      min_obs = 30,
+      bounds = "upper",
+      type = 2,
       desc = glue::glue(desc),
       comment = paste(
         glue::glue(comment_intro),
         glue::glue(comment_var),
         comment_body
       ),
-    comment_question = TRUE
+      comment_question = TRUE
     )
   )
   
@@ -709,23 +709,23 @@ create_outlier_issues <- function(
   issues_non_food_30d <- purrr::pmap(
     .l = non_food_30d_specs,
     .f = ~identify_outliers(
-    df_to_check = dfs_filtered$non_food_30_days,
-    df_full = dfs_full$non_food_30_days,
+      df_to_check = dfs_filtered$non_food_30_days,
+      df_full = dfs_full$non_food_30_days,
       var = !!rlang::sym(..1),
       by = ..2,
-    exclude = NULL,
-    transform = "log",
-    n_mad = 2,
-    min_obs = 30,
-    bounds = "upper",
-    type = 2,
+      exclude = NULL,
+      transform = "log",
+      n_mad = 2,
+      min_obs = 30,
+      bounds = "upper",
+      type = 2,
       desc = glue::glue(desc),
       comment = paste(
         glue::glue(comment_intro),
         glue::glue(comment_var),
         comment_body
       ),
-    comment_question = TRUE
+      comment_question = TRUE
     )
   )
 
@@ -744,23 +744,23 @@ create_outlier_issues <- function(
   issues_non_food_6m <- purrr::pmap(
     .l = non_food_6m_specs,
     .f = ~ identify_outliers(
-    df_to_check = dfs_filtered$non_food_6_months,
-    df_full = dfs_full$non_food_6_months,
+      df_to_check = dfs_filtered$non_food_6_months,
+      df_full = dfs_full$non_food_6_months,
       var = !!rlang::sym(..1),
       by = ..2,
-    exclude = NULL,
-    transform = "log",
-    n_mad = 2,
-    min_obs = 30,
-    bounds = "upper",
-    type = 2,
+      exclude = NULL,
+      transform = "log",
+      n_mad = 2,
+      min_obs = 30,
+      bounds = "upper",
+      type = 2,
       desc = glue::glue(desc),
       comment = paste(
         glue::glue(comment_intro),
         glue::glue(comment_var),
         comment_body
       ),
-    comment_question = TRUE
+      comment_question = TRUE
     )
   )
 
@@ -779,23 +779,23 @@ create_outlier_issues <- function(
   issues_non_food_12m <- purrr::pmap(
     .l = non_food_12m_specs,
     .f = ~ identify_outliers(
-    df_to_check = dfs_filtered$non_food_12_months,
-    df_full = dfs_full$non_food_12_months,
+      df_to_check = dfs_filtered$non_food_12_months,
+      df_full = dfs_full$non_food_12_months,
       var = !!rlang::sym(..1),
       by = ..2,
-    exclude = NULL,
-    transform = "log",
-    n_mad = 2,
-    min_obs = 30,
-    bounds = "upper",
-    type = 2,
+      exclude = NULL,
+      transform = "log",
+      n_mad = 2,
+      min_obs = 30,
+      bounds = "upper",
+      type = 2,
       desc = glue::glue(desc),
       comment = paste(
         glue::glue(comment_intro),
         glue::glue(comment_var),
         comment_body
       ),
-    comment_question = TRUE
+      comment_question = TRUE
     )
   )
 
@@ -913,29 +913,29 @@ create_outlier_issues <- function(
   issues_seed_purchase <- purrr::pmap(
     .l = seed_lvl_specs,
     .f = ~ identify_outliers(
-    df_to_check = add_unit_price(
-      df = dfs_filtered$r_seed_type,
-      value = ag05_q07,
-      quantity = ag05_q06_amount
-    ),
+      df_to_check = add_unit_price(
+        df = dfs_filtered$r_seed_type,
+        value = ag05_q07,
+        quantity = ag05_q06_amount
+      ),
       df_full = add_unit_price(
-      df = dfs_full$r_seed_type,
-      value = ag05_q07,
-      quantity = ag05_q06_amount
-    ),
+        df = dfs_full$r_seed_type,
+        value = ag05_q07,
+        quantity = ag05_q06_amount
+      ),
       var = !!rlang::sym(..1),
       by = ..2,
-    exclude = NULL,
-    transform = "log",
-    bounds = "upper",
-    type = 2,
+      exclude = NULL,
+      transform = "log",
+      bounds = "upper",
+      type = 2,
       desc = glue::glue(desc),
       comment = paste(
         glue::glue(comment_intro),
         glue::glue(comment_var),
         comment_body
       ),
-    comment_question = TRUE
+      comment_question = TRUE
     )
   )
 
@@ -947,9 +947,9 @@ create_outlier_issues <- function(
     ~ var, ~ by,
     "ag06_q03_quantity", to_comma_sep_str(
       c(
-      # crop input
+        # crop input
         "r_crop_inputs__id",
-      # unit
+        # unit
         "ag06_q03_unit"
       )
     )
@@ -966,17 +966,17 @@ create_outlier_issues <- function(
       df_full = dfs_full$r_crop_inputs,
       var = !!rlang::sym(..1),
       by = ..2,
-    exclude = NULL,
-    transform = "log",
-    bounds = "upper",
-    type = 2,
+      exclude = NULL,
+      transform = "log",
+      bounds = "upper",
+      type = 2,
       desc = glue::glue(desc),
       comment = paste(
         glue::glue(comment_intro),
         glue::glue(comment_var),
         comment_body
       ),
-    comment_question = TRUE
+      comment_question = TRUE
     )
   )
 
