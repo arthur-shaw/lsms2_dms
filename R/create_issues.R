@@ -191,6 +191,8 @@ to_comma_sep_str <- function(x) {
 #' @param dfs_full List of data frames that contain all survey observations.
 #' @param dfs_filtered List of data frames that are filtered to observations
 #' of interest.
+#' @param admin1_var Character.
+#' @param urb_rur_var Character.
 #' @param get_msg Function for retrieving the right message
 #'
 #' @return Data frame of issues, of the form created by
@@ -206,6 +208,8 @@ to_comma_sep_str <- function(x) {
 create_outlier_issues <- function(
   dfs_full,
   dfs_filtered,
+  admin1_var,
+  urb_rur_var,
   get_msg
 ) {
 
@@ -234,7 +238,7 @@ create_outlier_issues <- function(
   # compose group variables
   # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
-  by_area <- c("admin1", "urb_rur")
+  by_area <- c(admin1_var, urb_rur_var)
   by_construction_materials <- c(
     "hh11_q12", # walls
     "hh11_q13", # roof
@@ -1232,6 +1236,8 @@ create_outlier_issues <- function(
 #' @param dfs_full List of data frames that contain all survey observations.
 #' @param dfs_filtered List of data frames that are filtered to observations
 #' of interest.
+#' @param admin1_var Character.
+#' @param urb_rur_var Character.
 #' @param get_msg Function for retrieving the right message
 
 #' @return Data frame of issues, of the form created by
@@ -1242,6 +1248,8 @@ create_issues <- function(
   df_attribs,
   dfs_full,
   dfs_filtered,
+  admin1_var,
+  urb_rur_var,
   get_msg
 ) {
 
@@ -1257,6 +1265,8 @@ create_issues <- function(
   issues_outlier <- create_outlier_issues(
     dfs_full = dfs_full,
     dfs_filtered = dfs_filtered,
+    admin1_var = admin1_var,
+    urb_rur_var = urb_rur_var,
     get_msg = get_msg
   )
 

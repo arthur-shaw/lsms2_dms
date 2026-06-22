@@ -37,7 +37,11 @@ household_qnr_expr <- ""
 household_qnr_var  <- ""
 
 # name of the member-level file, as it appears in Designer and without `.dta`
-members_roster_var <- "t0_hhroster"
+members_roster_var <- ""
+
+# name of variables used for outlier groups: admin1 and urban/rural
+admin1_var <- ""
+urb_rur_var <- ""
 
 # -----------------------------------------------------------------------------
 # Community questionnaire

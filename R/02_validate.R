@@ -114,6 +114,8 @@ issues <- create_issues(
   df_attribs = attribs,
   dfs_full = dfs_full,
   dfs_filtered = dfs_filtered,
+  admin1_var = admin1_var,
+  urb_rur_var = urb_rur_var,
   get_msg = get_msg
 )
 
