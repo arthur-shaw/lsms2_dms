@@ -1039,7 +1039,14 @@ create_outlier_issues <- function(
     "ag10_q23", # num died from disease
     "ag10_q24", # num died from other causes
     "ag10_q27", # num went missing
-  )
+  ) |>
+	dplyr::rowwise() |>
+  dplyr::mutate(
+    by = "lv_roster__id",
+    desc = get_msg("outliers", "livestock", var)
+  ) |>
+  dplyr::ungroup()
+	
 
   issues_livestock <- purrr::pmap(
     .l = livestock_lvl_specs,
@@ -1062,7 +1069,7 @@ create_outlier_issues <- function(
           suffix = "slaughtered"
         )
       ,
-      dfs_full =
+      df_full =
         dfs_full$lv_roster |>
 	      add_unit_price(
           value = ag10_q15,
@@ -1081,15 +1088,17 @@ create_outlier_issues <- function(
         )
       ,
       var = !!rlang::sym(..1),
-      by = lv_roster__id, # livestock type
+      by = ..2, # livestock type
       exclude = NULL,
       transform = "log",
       bounds = "upper",
       type = 2,
-      # TODO: compose description
-      desc = "",
-      # TODO: compose comment
-      comment = "",
+      desc = glue::glue(desc),
+      comment = paste(
+        glue::glue(comment_intro),
+        glue::glue(comment_var),
+        comment_body
+      ),
       comment_question = TRUE
     )
   )

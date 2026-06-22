@@ -395,3 +395,126 @@ external_labor_inputs:
     en: number of free/exchange workers
     fr: nombre de travailleurs libres ou en échange
 
+# ==============================================================================
+# livestock-level
+# ==============================================================================
+
+livestock:
+
+  # ----------------------------------------------------------------------------
+  # stock
+  # ----------------------------------------------------------------------------
+
+  ag10_q04:
+    # number currently kept
+    en: >
+      number of {labelled::to_character(lv_roster__id)}
+      currently kept
+    fr: >
+      nombre de {labelled::to_character(lv_roster__id)}
+      actuellement détenu(e)s
+  # number kept that are exotic
+  ag10_q05:
+    en: >
+      number of {labelled::to_character(lv_roster__id)}
+      that are exotic
+    fr: >
+      nombre de {labelled::to_character(lv_roster__id)}
+      qui sont exotiques
+  # number kept but not owned
+  ag10_q08:
+    en: >
+      number of {labelled::to_character(lv_roster__id)}
+      that kept but not owned
+    fr: >
+      nombre de {labelled::to_character(lv_roster__id)}
+      qui sont détenu(e)s mais pas possédé(e)s
+  # number owned but not kept
+  ag10_q10:
+    en: >
+      number of {labelled::to_character(lv_roster__id)}
+      that owned but not kept
+    fr: >
+      nombre de {labelled::to_character(lv_roster__id)}
+      qui sont possédé(e)s mais pas détenu(e)s
+  # number kept 12 months ago
+  ag10_q12:
+    en: >
+      number of {labelled::to_character(lv_roster__id)}
+      that were kept 12 months ago
+    fr: >
+      nombre de {labelled::to_character(lv_roster__id)}
+      qui sont détenu(e)s il y a 12 mois
+  # number born
+  ag10_q13:
+    en: >
+      number of {labelled::to_character(lv_roster__id)}
+      born
+    fr: >
+      nombre de {labelled::to_character(lv_roster__id)}
+      né(e)s
+  # number bought
+  ag10_q14:
+    en: >
+      number of {labelled::to_character(lv_roster__id)}
+      bought
+    fr: >
+      nombre de {labelled::to_character(lv_roster__id)}
+      acheté
+  # unit price of purchase
+  # constructed with `add_unit_price()`
+  unit_price_bought:
+    en: unit price for purchasing {labelled::to_character(lv_roster__id)}
+    fr: prix unitaire d'achat pour {labelled::to_character(lv_roster__id)}
+  # number received
+  ag10_q16:
+    en: number of {labelled::to_character(lv_roster__id)} received
+    fr: nombre de {labelled::to_character(lv_roster__id)} reçu
+  # number sold
+  ag10_q17:
+    en: number of {labelled::to_character(lv_roster__id)} sold
+    fr: nombre de {labelled::to_character(lv_roster__id)} vendu
+  # unit price of sales
+  # constructed with `add_unit_price()`
+  unit_price_sold:
+    en: unit price for selling {labelled::to_character(lv_roster__id)}
+    fr: prix unitaire de vente pour {labelled::to_character(lv_roster__id)}
+  # number slaughtered
+  ag10_q19:
+    en: number of {labelled::to_character(lv_roster__id)} slaughtered
+    fr: nombre de {labelled::to_character(lv_roster__id)} abattu
+  # unit price of the the slaughtered animal
+  # constructed with `add_unit_price()`
+  unit_price_slaughtered:
+    en: >
+      unit price for selling slaughtered
+      {labelled::to_character(lv_roster__id)}
+    fr: >
+      prix unitaire de vente pour des
+      {labelled::to_character(lv_roster__id)} abattu(e)s
+  # number died from disease
+  ag10_q23:
+    en: >
+      number of {labelled::to_character(lv_roster__id)}
+      that died from disease
+    fr: >
+      nombre de {labelled::to_character(lv_roster__id)}
+      qui sont mort(e)s de maladie
+  # number died from other causes
+  ag10_q24:
+    en: >
+      number of {labelled::to_character(lv_roster__id)}
+      that died from other causes
+    fr: >
+      nombre de {labelled::to_character(lv_roster__id)}
+      qui sont mort(e)s d'autres causes
+  # number went missing
+  ag10_q27:
+    en: >
+      number of {labelled::to_character(lv_roster__id)}
+      that went missing
+    fr: >
+      nombre de {labelled::to_character(lv_roster__id)}
+      qui sont porté(e)s disparu(e)
+
+  # ----------------------------------------------------------------------------
