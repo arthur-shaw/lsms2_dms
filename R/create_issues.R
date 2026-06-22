@@ -435,7 +435,7 @@ create_outlier_issues <- function(
     df_to_check = dfs_filtered$r_income,
     df_full = dfs_full$r_income,
     var = hh17_q03,
-    by = r_income__id,
+    by = "r_income__id",
     exclude = NULL,
     transform = "log",
     bounds = "upper",
@@ -443,7 +443,7 @@ create_outlier_issues <- function(
     desc = get_msg("outliers", "income", "desc"),
     comment = paste(
         # evaluate variable label inside outlier function
-        glue(get_msg("outliers", "income", "comment_intro")),
+        get_msg("outliers", "income", "comment_intro"),
         # get literal text
         get_msg("outliers", "income", "comment_var"),
         comment_body
