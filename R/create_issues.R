@@ -71,7 +71,7 @@ create_logical_issues <- function(
 
   issue_no_food_consumed <- susoreview::create_issue(
     df_attribs = df_attribs,
-    vars = c(any_food_away_from_home, n_foods_at_home),
+    vars = c("any_food_away_from_home", "n_foods_at_home"),
     where = any_food_away_from_home == 0 & n_foods_at_home == 0,
     type = 1,
     desc = desc_no_food,
@@ -88,7 +88,9 @@ create_logical_issues <- function(
 
   issue_no_nf_conso <- susoreview::create_issue(
     df_attribs = df_attribs,
-    vars = c(any_nf_cons_7d, any_nf_cons_30d, any_nf_cons_6m, any_nf_cons_12m),
+    vars = c(
+      "any_nf_cons_7d", "any_nf_cons_30d", "any_nf_cons_6m", "any_nf_cons_12m"
+    ),
     type = 1,
     where = dplyr::if_all(
       .cols = c(
