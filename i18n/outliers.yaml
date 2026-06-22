@@ -381,3 +381,17 @@ crop_inputs:
       {labelled::to_character(r_crop_inputs__id)}
       en {labelled::to_character(ag06_q03_unit)}
 
+# ==============================================================================
+# external crop labor roster
+# ==============================================================================
+
+external_labor_inputs:
+  # hired labor
+  ag08_q03:
+    en: number of hired workers
+    fr: nombre de travailleurs embauchés
+  # free/exchange labor
+  ag08_q09:
+    en: number of free/exchange workers
+    fr: nombre de travailleurs libres ou en échange
+

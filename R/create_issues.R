@@ -981,14 +981,20 @@ create_outlier_issues <- function(
   )
 
   # ----------------------------------------------------------------------------
-  # crop-input level
+  # crop-labelor level
   # ----------------------------------------------------------------------------
 
   crop_labor_lvl_specs <- tibble::tribble(
     ~ var,
     "ag08_q03", # hired labor
     "ag08_q09" # free/exchange labor
-  )
+  ) |>
+	dplyr::rowwise() |>
+	dplyr::mutate(
+    by = "ag08r_labor__id",
+    desc = get_msg("outliers", "external_labor_inputs", var)
+  ) |>
+	dplyr::ungroup()
 
   issues_crop_labor <- purrr::pmap(
     .l = crop_labor_lvl_specs,
@@ -996,15 +1002,17 @@ create_outlier_issues <- function(
       df_to_check = dfs_filtered$ag08r_labor,
       df_full = dfs_full$ag08r_labor,
       var = !!rlang::sym(..1),
-      by = ag08r_labor__id, # person type
+      by = ..2, # person type
       exclude = NULL,
       transform = "log",
       bounds = "upper",
       type = 2,
-      # TODO: compose description
-      desc = "",
-      # TODO: compose comment
-      comment = "",
+      desc = glue::glue(desc),
+      comment = paste(
+        glue::glue(comment_intro),
+        glue::glue(comment_var),
+        comment_body
+      ),
       comment_question = TRUE
     )
   )
