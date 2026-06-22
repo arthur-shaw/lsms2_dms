@@ -1322,7 +1322,13 @@ create_outlier_issues <- function(
     ~ var,
     "ag15_q05",
     "ag15_q06",
-  )
+  ) |>
+	dplyr::rowwise() |>
+  dplyr::mutate(
+    by = "ag_assets__id",
+    desc = get_msg("outliers", "ag_assets", var)
+  ) |>
+  dplyr::ungroup()
 
   issues_ag_equipment <- purrr::pmap(
     .l = ag_equipment_lvl_specs,
@@ -1330,15 +1336,17 @@ create_outlier_issues <- function(
       df_to_check = dfs_filtered$ag_assets,
       df_full = dfs_full$ag_assets,
       var = !!rlang::sym(..1),
-      by = r_aglabor_nonhh__id, # ag equipment
+      by = ..2, # ag equipment
       exclude = NULL,
       transform = "log",
       bounds = "upper",
       type = 2,
-      # TODO: compose description
-      desc = "",
-      # TODO: compose comment
-      comment = "",
+      desc = glue::glue(desc),
+      comment = paste(
+        glue::glue(comment_intro),
+        glue::glue(comment_var),
+        comment_body
+      ),
       comment_question = TRUE
     )
   )
