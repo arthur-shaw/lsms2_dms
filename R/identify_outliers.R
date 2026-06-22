@@ -417,6 +417,9 @@ identify_outliers <- function(
         # recast from potentially haven class (if has special values)
         # to simple numeric so that can construct the comment properly
         {{var}} := as.numeric({{var}}),
+        # evaluate any glue expressions in `desc` before dropping into
+        # template below
+        desc = glue::glue(desc),
         issue_type = type,
         issue_desc = glue::glue(
           "{desc}",
@@ -511,6 +514,9 @@ identify_outliers <- function(
         # recast from potentially haven class (if has special values)
         # to simple numeric so that can construct the comment properly
         {{var}} := as.numeric({{var}}),
+        # evaluate any glue expressions in `desc` before dropping into
+        # template below
+        desc = glue::glue(desc),
         issue_type = 2,
         issue_desc = glue::glue(
           "{desc}",
