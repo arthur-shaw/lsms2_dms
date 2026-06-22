@@ -57,7 +57,7 @@ create_attributes <- function(
   # ============================================================================
 
   # all other consumtpion
-  attribute_conso_spec <- tibble::tribble(
+  conso_spec <- tibble::tribble(
     ~ attrib_name, ~ fn_name, ~ df_name, ~ condition, ~ attrib_vars,
     "n_foods_at_home", "count_vars", "households", "hh08_q04__",
       "hh08_q04__",
@@ -74,7 +74,7 @@ create_attributes <- function(
 	dplyr::mutate(df_name = paste0("dfs_filtered$", df_name))
 
   attribs_consumption <- purrr::pmap(
-    .l = attrib_conso_spec,
+    .l = conso_spec,
     .f = create_attribute_from_spec
   )
 
