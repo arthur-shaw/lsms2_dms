@@ -186,43 +186,43 @@ fs::file_copy(
 # HQ
 # ---------------------------------------------------------------------------
 
-# signal that report rendering process is underway
-hq_report_msg <- get_msg("validate", "hq_report")
-cli::cli_alert_success(hq_report_msg)
+# # signal that report rendering process is underway
+# hq_report_msg <- get_msg("validate", "hq_report")
+# cli::cli_alert_success(hq_report_msg)
 
-# determine report start/end dates
-report <- infer_report_period(start = report_start, report_end)
+# # determine report start/end dates
+# report <- infer_report_period(start = report_start, report_end)
 
-# collect parameters for rendering
-report_params <- list(
-  dir_proj = dirs$proj,
-  household_qnr_var = household_qnr_var,
-  community_qnr_var = community_qnr_var,
-  report_start = report$start,
-  report_end = report$end
-)
+# # collect parameters for rendering
+# report_params <- list(
+#   dir_proj = dirs$proj,
+#   household_qnr_var = household_qnr_var,
+#   community_qnr_var = community_qnr_var,
+#   report_start = report$start,
+#   report_end = report$end
+# )
 
-# construct paths
-hq_report_template_path <- fs::path(dirs$proj, "inst", "hq_report.qmd")
-hq_report_temp_path <- fs::path(dirs$proj, "inst", "hq_report.html")
-hq_report_final_path <- fs::path(
-  dirs$validation$household$hq_report,
-  "hq_report.html"
-)
+# # construct paths
+# hq_report_template_path <- fs::path(dirs$proj, "inst", "hq_report.qmd")
+# hq_report_temp_path <- fs::path(dirs$proj, "inst", "hq_report.html")
+# hq_report_final_path <- fs::path(
+#   dirs$validation$household$hq_report,
+#   "hq_report.html"
+# )
 
-# render in template directory
-quarto::quarto_render(
-  input = hq_report_template_path,
-  execute_params = report_params
-)
+# # render in template directory
+# quarto::quarto_render(
+#   input = hq_report_template_path,
+#   execute_params = report_params
+# )
 
-# remove old output, if present
-if (fs::file_exists(hq_report_final_path)) {
-  fs::file_delete(hq_report_final_path)
-}
+# # remove old output, if present
+# if (fs::file_exists(hq_report_final_path)) {
+#   fs::file_delete(hq_report_final_path)
+# }
 
-# move report to output directory
-fs::file_move(
-  path = hq_report_temp_path,
-  new_path = hq_report_final_path
-)
+# # move report to output directory
+# fs::file_move(
+#   path = hq_report_temp_path,
+#   new_path = hq_report_final_path
+# )
