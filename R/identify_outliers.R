@@ -156,6 +156,7 @@ resolve_by <- function(by, df) {
 #' between filter rowwise select bind_rows case_when
 #' @importFrom tibble tibble
 #' @importFrom glue glue glue_collapse
+#' @importFrom withr local_options
 identify_outliers <- function(
   df_to_check,
   df_full,
@@ -251,6 +252,9 @@ identify_outliers <- function(
   # compute thresholds for outliers
   # either by group(s) in `by` or overall
   # ============================================================================
+
+  # silence info messages about grouping from `summarise`
+  withr::local_options(dplyr.summarise.inform = FALSE)
 
   df_thresholds <- df_full |>
     (\(x) {
