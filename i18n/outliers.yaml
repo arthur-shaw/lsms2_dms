@@ -280,3 +280,36 @@ member:
     en: alcoholic drinks away from home
     fr: boissons alcoolisées en dehors du ménage
 
+# ==============================================================================
+# food-level
+# ==============================================================================
+
+food:
+  hh08_q05_amount:
+    en: >
+      total quantity consumed of
+      {labelled::to_character(food_consumption_at_home__id)}
+      (in {labelled::to_character(hh08_q05_unit)})
+    fr: >
+      la quantité totale consommé de
+      {labelled::to_character(food_consumption_at_home__id)}
+      (en {labelled::to_character(hh08_q05_unit)} )
+  hh08_q10_amount:
+    en: >
+      quantity purchased of
+      {labelled::to_character(food_consumption_at_home__id)}
+      (in {labelled::to_character(hh08_q10_unit)})
+    fr: >
+      la quantité achetée de
+      {labelled::to_character(food_consumption_at_home__id)}
+      (en {labelled::to_character(hh08_q10_unit)})
+  unit_purchase_price:
+    en: >
+      unit purchase price of 
+      {labelled::to_character(food_consumption_at_home__id)}
+      (price / {labelled::to_character(hh08_q10_unit)})
+    fr: >
+      prix unitaire d'achat de
+      {labelled::to_character(food_consumption_at_home__id)}
+      (price / {labelled::to_character(hh08_q10_unit)})
+
