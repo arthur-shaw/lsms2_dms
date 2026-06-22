@@ -397,7 +397,10 @@ create_outlier_issues <- function(
     ~ var, ~ by,
     "hh15b_q19", "NULL",
     "hh15b_q20", "hh15b_q1_code",
-  )
+  ) |>
+  dplyr::rowwise() |>
+  dplyr::mutate(desc = get_msg("outliers", "business", var)) |>
+  dplyr::ungroup()
 
   issues_biz_lvl <- purrr::pmap(
     .l = biz_lvl_specs,
