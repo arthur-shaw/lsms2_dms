@@ -46,6 +46,10 @@ choice_fetch_new:
   en: "Fetch new data, then run"
   fr: "Obtenir de nouvelles données, puis exécuter"
 
+choice_use_emailed:
+  en: "Use emailed, zipped data"
+  fr: "Utiliser les données compressées par courriel"
+
 # ── Timestamp status messages ──────────────────────────────────────────────────
 # glue placeholder: {time} (formatted as "HH:MM")
 data_last_fetched_today:
@@ -99,6 +103,10 @@ detail_existing:
 detail_fetching:
   en: "fetching new data first"
   fr: "récupération des données d'abord"
+
+detail_emailed:
+  en: "processing emailed data"
+  fr: "traitement des données par courriel"
 
 detail_no_data_needed:
   en: "no prior data required"

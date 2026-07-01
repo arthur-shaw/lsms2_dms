@@ -92,36 +92,54 @@ data_source_menu <- function(
   cli::cli_rule(left = get_msg("selector", "header_data_source"))
 
   if (is.null(mtime)) {
-    # No data on disk — skip the menu, proceed directly to fetch
+    # No data on disk — present 2-choice menu (fetch / emailed)
     workflow <- workflow_label
-    tmpl <- get_msg("selector", "data_not_found")
-    cli::cli_warn(glue::glue(tmpl))
-    return("fetch")
+    tmpl <- get_msg("selector", "prompt_data_source")
+    prompt <- glue::glue(tmpl)
+
+    choice <- utils::menu(
+      choices = c(
+        get_msg("selector", "choice_fetch_new"),
+        get_msg("selector", "choice_use_emailed")
+      ),
+      title = prompt
+    )
+
+    switch(choice,
+      `1` = "fetch",
+      `2` = "emailed",
+      {
+        cli::cli_inform(get_msg("selector", "cancelled"))
+        invisible(NULL)
+      }
+    )
+  } else {
+    # Data exists — show timestamp and present 3-choice menu
+    cli::cli_inform(format_timestamp(mtime))
+
+    workflow <- workflow_label
+    tmpl <- get_msg("selector", "prompt_data_source")
+    prompt <- glue::glue(tmpl)
+
+    choice <- utils::menu(
+      choices = c(
+        get_msg("selector", "choice_use_existing"),
+        get_msg("selector", "choice_fetch_new"),
+        get_msg("selector", "choice_use_emailed")
+      ),
+      title = prompt
+    )
+
+    switch(choice,
+      `1` = "existing",
+      `2` = "fetch",
+      `3` = "emailed",
+      {
+        cli::cli_inform(get_msg("selector", "cancelled"))
+        invisible(NULL)
+      }
+    )
   }
-
-  # Data exists — show timestamp and present choices
-  cli::cli_inform(format_timestamp(mtime))
-
-  workflow <- workflow_label
-  tmpl <- get_msg("selector", "prompt_data_source")
-  prompt <- glue::glue(tmpl)
-
-  choice <- utils::menu(
-    choices = c(
-      get_msg("selector", "choice_use_existing"),
-      get_msg("selector", "choice_fetch_new")
-    ),
-    title = prompt
-  )
-
-  switch(choice,
-    `1` = "existing",
-    `2` = "fetch",
-    {
-      cli::cli_inform(get_msg("selector", "cancelled"))
-      invisible(NULL)
-    }
-  )
 }
 
 # ==============================================================================
@@ -155,7 +173,7 @@ wf_get_data <- function(dirs) {
 #' @importFrom glue glue
 wf_validate <- function(dirs) {
 
-  # Step B1 — Data source sub-dirs$scripts = dirs$scriptsmenu
+  # Step B1 — Data source sub-menu
   workflow_label <- get_msg("selector", "choice_validate")
   data_choice <- data_source_menu(
     dirs = dirs,
@@ -177,6 +195,21 @@ wf_validate <- function(dirs) {
     # Now run validate
     workflow <- get_msg("selector", "choice_validate")
     detail   <- get_msg("selector", "detail_fetching")
+    # Note: We already printed the confirmation above, so we just source
+    source(dirs$scripts$validate)
+  } else if (data_choice == "emailed") {
+    workflow <- get_msg("selector", "choice_get_data")
+    detail   <- get_msg("selector", "detail_emailed")
+    tmpl     <- get_msg("selector", "starting_workflow")
+    cli::cli_alert_success(glue::glue(tmpl))
+    # Process household emailed data
+    get_emailed_data("household", dirs)
+    # Process community emailed data if present
+    get_emailed_data("community", dirs)
+
+    # Now run validate
+    workflow <- get_msg("selector", "choice_validate")
+    detail   <- get_msg("selector", "detail_emailed")
     # Note: We already printed the confirmation above, so we just source
     source(dirs$scripts$validate)
   } else {
@@ -271,6 +304,21 @@ wf_monitor <- function(dirs) {
     # Now run monitor
     workflow <- get_msg("selector", "choice_monitor")
     detail   <- get_msg("selector", "detail_fetching")
+    # Note: We already printed the confirmation above, so we just source
+    source(dirs$scripts$monitor)
+  } else if (data_choice == "emailed") {
+    workflow <- get_msg("selector", "choice_get_data")
+    detail   <- get_msg("selector", "detail_emailed")
+    tmpl     <- get_msg("selector", "starting_workflow")
+    cli::cli_alert_success(glue::glue(tmpl))
+    # Process household emailed data
+    get_emailed_data("household", dirs)
+    # Process community emailed data if present
+    get_emailed_data("community", dirs)
+
+    # Now run monitor
+    workflow <- get_msg("selector", "choice_monitor")
+    detail   <- get_msg("selector", "detail_emailed")
     # Note: We already printed the confirmation above, so we just source
     source(dirs$scripts$monitor)
   } else {
