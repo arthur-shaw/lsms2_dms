@@ -17,10 +17,12 @@
 #'  meta: <character>
 #'  hhold:
 #'    tracked: <character>
+#'    inbox: <character>
 #'    downloaded: <character>
 #'    combined: <character>
 #'  community:
 #'    tracked: <character>
+#'    inbox: <character>
 #'    downloaded: <character>
 #'    combined: <character>
 #' validation:
@@ -89,6 +91,7 @@ construct_paths <- function() {
         # construct sub-directories under the parent
         child_dirs <- list(
           tracked = fs::path(parent_dir, "00_tracked"),
+          inbox = fs::path(parent_dir, "00_inbox"),
           downloaded = fs::path(parent_dir, "01_downloaded"),
           combined = fs::path(parent_dir, "02_combined")
         )
