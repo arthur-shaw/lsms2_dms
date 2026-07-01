@@ -19,3 +19,19 @@ merging:
 getting_metadata:
   en: "Downloading team composition"
   fr: "Téléchargement de la composition des équipes en cours"
+
+emailed_inbox_empty:
+  en: "No emailed data found for {type}. Skipping."
+  fr: "Aucune donnée par courriel trouvée pour {type}. Ignoré."
+
+emailed_deleting:
+  en: "Deleting stale emailed data"
+  fr: "Suppression des données par courriel obsolètes en cours"
+
+emailed_classifying:
+  en: "Inspecting zip file structure"
+  fr: "Inspection de la structure du fichier zip en cours"
+
+emailed_extracting:
+  en: "Extracting {structure}"
+  fr: "Extraction de {structure} en cours"
