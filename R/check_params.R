@@ -291,7 +291,7 @@ check_qnr_var_is_dset <- function(
   call = rlang::caller_env()
 ) {
 
-  dset_names <- combined_data_dir |>
+  dset_names <- combined_dir |>
     fs::dir_ls(
       type = "file",
       glob = "*.dta"
