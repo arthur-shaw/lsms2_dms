@@ -638,6 +638,7 @@ create_outlier_issues <- function(
       df_to_check = add_food_unit_price(dfs_filtered$food_consumption_at_home),
       df_full = add_food_unit_price(dfs_full$food_consumption_at_home),
       var = !!rlang::sym(..1),
+      by = ..2,
       exclude = NULL,
       transform = "log",
       bounds = "upper",
