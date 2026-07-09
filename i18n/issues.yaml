@@ -5,7 +5,7 @@ any_unanswered:
   comment:
     en: >
       ERROR: The interview was marked as complete,
-      but {NotAnswered} questions wre left unanswered.
+      but {NotAnswered} question(s) were left unanswered.
       Please answer these questions.
     fr: >
       ERREUR : L'entretien a été marqué comme achevé,
