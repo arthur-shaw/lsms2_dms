@@ -2,7 +2,7 @@
 
 This project aims to manage data quality by automating several workflows:
 
-- **Get data.** For both the demand- and supply-side surveys:
+- **Get data.** For both the household and community surveys:
   - Download all data
   - Combine data from all versions
 - **Validate interviews.** 
@@ -321,7 +321,7 @@ The validation workflow reviews interviews, identifies issues, and recommends ac
 - **Review.** If would have been rejected except for potentially explanatory comments. These interviews require human review, at the very least to read the comments.
 - **Follow-up.** If there is 1+ validation that has already been the basis for prior rejection. Since rejection has not lead to remedying the issue, survey managers need to follow-up to understand why not.
 
-The results can be found in `02_validation/01/demand/01_recommendations`.
+The results can be found in `02_validation/01_household/01_recommendations`.
 
 There are several files present that can be understood as follows:
 
@@ -341,7 +341,7 @@ There are several files present that can be understood as follows:
 
 ###### Rejections
 
-To help with rejections, the program copies recommended rejections to `02_validation/01/demand/01_decisions`.
+To help with rejections, the program copies recommended rejections to `02_validation/01_household/01_decisions`.
 
 The `to_reject_api.xlsx` contains recommendations and can be edited by the user, whether that editing mean removing interviews, adding interviews, or editing the reasons for rejection.
 
