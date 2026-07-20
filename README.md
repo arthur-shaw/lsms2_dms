@@ -250,6 +250,29 @@ To run the program:
 - Open `run_workflow.R`
 - Source the script
 
+To unpack this a bit, RStudio's interface consists of 4 panes:
+
+![](https://docs.posit.co/ide/user/ide/get-started/images/rstudio-panes-labeled.jpeg)
+
+- **Output.** Where script file can be easily found.
+- **Code.** Where scripts will be loaded and sourced (run).
+- **Console** Where messages will apear that inform about process and problems.
+
+To open `run_workflow.R`:
+
+- Navigate to the `Output` pane
+- Click on the `Files` tab of that pane
+- Find `run_workflow.R` in the list of files
+- Click on it
+
+To source `run_workflow.R`, click on the `Source` button along the top of the `run_workflow.R` script.
+
+For a visual reference, find the button that looks like the one labelled 3 in the image below.
+
+![](https://docs.posit.co/ide/user/ide/guide/code/images/re-run-source.png)
+
+Once this is done, the script will start running in the `Console` pane.
+
 #### Choose 👉
 
 Once this script is run, you will be asked to choose a workflow:
