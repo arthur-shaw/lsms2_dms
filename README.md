@@ -297,10 +297,9 @@ Here is what each workflow entails:
   - Download all data
   - Combine all versions
 - **Validate interviews.** 
-  - Check logical data for errors and statistical outliers.
+  - Check data for logical errors and statistical outliers.
   - Recommend actions to take
-  - Create propose interviews to reject
-  - Create a report to monitor both validations done by this program and validations done by Survey Solutions.
+  - Propose interviews to reject
 - **Reject flagged interviews.**
   - Collect interviews to be rejected
   - Reject them on the server, posting interview- and question-level comments
