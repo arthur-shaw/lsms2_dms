@@ -183,19 +183,6 @@ wf_validate <- function(dirs) {
     qnr_var = "household_qnr_var"
   )
 
-  check_qnr_var_is_dset(
-    combined_dir = dirs$data$household$combined,
-    params = params,
-    qnr_var = "household_qnr_var"
-  )
-
-  check_var_in_dset(
-    combined_dir = dirs$data$household$combined,
-    params = params,
-    qnr_var = household_qnr_var,
-    param_var_name = "admin1_var"
-  )
-
   # Step B1 — Data source sub-menu
   workflow_label <- get_msg("selector", "choice_validate")
   data_choice <- data_source_menu(
