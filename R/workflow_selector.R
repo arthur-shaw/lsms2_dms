@@ -202,10 +202,26 @@ wf_validate <- function(dirs) {
     cli::cli_alert_success(glue::glue(tmpl))
     source(dirs$scripts$get_data)
 
-    # Now run validate
-    workflow <- get_msg("selector", "choice_validate")
-    detail   <- get_msg("selector", "detail_fetching")
-    # Note: We already printed the confirmation above, so we just source
+    # --------------------------------------------------------------------------
+    # check params concerned with data
+    # --------------------------------------------------------------------------
+
+    checking_params_msg <- get_msg("selector", "checking_params")
+    cli::cli_info(checking_params_msg)
+
+    check_qnr_var_is_dset(
+      combined_dir = dirs$data$household$combined,
+      params = params,
+      qnr_var = "household_qnr_var"
+    )
+
+    check_var_in_dset(
+      combined_dir = dirs$data$household$combined,
+      params = params,
+      qnr_var = household_qnr_var,
+      param_var_name = "admin1_var"
+    )
+
     source(dirs$scripts$validate)
   } else if (data_choice == "emailed") {
     workflow <- get_msg("selector", "choice_get_data")
@@ -217,10 +233,23 @@ wf_validate <- function(dirs) {
     # Process community emailed data if present
     get_emailed_data("community", dirs)
 
-    # Now run validate
-    workflow <- get_msg("selector", "choice_validate")
-    detail   <- get_msg("selector", "detail_emailed")
-    # Note: We already printed the confirmation above, so we just source
+    # --------------------------------------------------------------------------
+    # check params concerned with data
+    # --------------------------------------------------------------------------
+
+    check_qnr_var_is_dset(
+      combined_dir = dirs$data$household$combined,
+      params = params,
+      qnr_var = "household_qnr_var"
+    )
+
+    check_var_in_dset(
+      combined_dir = dirs$data$household$combined,
+      params = params,
+      qnr_var = household_qnr_var,
+      param_var_name = "admin1_var"
+    )
+
     source(dirs$scripts$validate)
   } else {
     # data_choice == "existing"
@@ -326,10 +355,23 @@ wf_monitor <- function(dirs) {
     # Process community emailed data if present
     get_emailed_data("community", dirs)
 
-    # Now run monitor
-    workflow <- get_msg("selector", "choice_monitor")
-    detail   <- get_msg("selector", "detail_emailed")
-    # Note: We already printed the confirmation above, so we just source
+    # --------------------------------------------------------------------------
+    # check params concerned with data
+    # --------------------------------------------------------------------------
+
+    check_qnr_var_is_dset(
+      combined_dir = dirs$data$household$combined,
+      params = params,
+      qnr_var = "household_qnr_var"
+    )
+
+    check_var_in_dset(
+      combined_dir = dirs$data$household$combined,
+      params = params,
+      qnr_var = household_qnr_var,
+      param_var_name = "admin1_var"
+    )
+
     source(dirs$scripts$monitor)
   } else {
     # data_choice == "existing"
@@ -340,6 +382,24 @@ wf_monitor <- function(dirs) {
     workflow <- get_msg("selector", "choice_monitor")
     tmpl     <- get_msg("selector", "starting_workflow")
     cli::cli_alert_success(glue::glue(tmpl))
+
+    # --------------------------------------------------------------------------
+    # check params concerned with data
+    # --------------------------------------------------------------------------
+
+    check_qnr_var_is_dset(
+      combined_dir = dirs$data$household$combined,
+      params = params,
+      qnr_var = "household_qnr_var"
+    )
+
+    check_var_in_dset(
+      combined_dir = dirs$data$household$combined,
+      params = params,
+      qnr_var = household_qnr_var,
+      param_var_name = "admin1_var"
+    )
+
     source(dirs$scripts$monitor)
   }
 

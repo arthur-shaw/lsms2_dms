@@ -116,3 +116,12 @@ detail_no_data_needed:
 cancelled:
   en: "No workflow selected. Exiting."
   fr: "Aucun flux de travail sélectionné. Fermeture."
+
+# ==============================================================================
+# workflow status messages
+# ==============================================================================
+
+checking_params:
+  en: "Checking parameters"
+  fr: "Vérification des paramètres en cours"
+
