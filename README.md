@@ -339,9 +339,9 @@ Both of these are currently only available for the household survey.
 
 The validation workflow reviews interviews, identifies issues, and recommends actions accordingly:
 
-- **Reject.** If there 1+ validation issue and no potentially explanatory comment, neither for the interview overall nor for questions involved in the issue(s) found. These interviews can be rejected.
-- **Review.** If would have been rejected except for potentially explanatory comments. These interviews require human review, at the very least to read the comments.
-- **Follow-up.** If there is 1+ validation that has already been the basis for prior rejection. Since rejection has not lead to remedying the issue, survey managers need to follow-up to understand why not.
+- **Reject.** If there is 1+ validation issue and no potentially explanatory comment, neither for the interview overall nor for questions involved in the issue(s) found. These interviews can be rejected.
+- **Review.** If the interview would have been rejected except for potentially explanatory comments. These interviews require human review, at the very least to read the comments. These comments may be either at the level of the interview or at the level of a question involved in an issue. 
+- **Follow-up.** If the interview has already been rejected for the same reason(s) earlier. Since rejection has not lead to remedying the issue, survey managers need to follow-up to understand why not.
 
 The results can be found in `02_validation/01_household/01_recommendations`.
 
