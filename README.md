@@ -373,7 +373,7 @@ The contents of this file will be used to reject interviews with the rejection w
 
 The validation workflow produces two sets of reports on the issues found by the validation workflow and by Survey Solutions:
 
-- Headquarters report
+- Headquarters report (🚧 Not yet implemented 🚧)
 - Team-level report (🚧 Not yet implemented 🚧)
 
 The Headquarters report provides an overview of the top issues overall and the number of issues by team.
