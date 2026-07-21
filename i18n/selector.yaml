@@ -133,3 +133,10 @@ data_validated:
   en: "Validation complete"
   fr: "Validation achevée"
 
+rejection_wip:
+  en: "Rejecting interview(s)"
+  fr: "Rejet d'entretien(s) en cours"
+
+rejection_complete:
+  en: "Rejection complete"
+  fr: "Rejet achevé"

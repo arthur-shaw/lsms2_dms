@@ -344,12 +344,39 @@ wf_reject <- function(dirs) {
     return(invisible(NULL))
   }
 
+  # ----------------------------------------------------------------------------
+  # start
+  # ----------------------------------------------------------------------------
+
+  # starting
   workflow <- get_msg("selector", "choice_reject")
   detail   <- get_msg("selector", "detail_no_data_needed")
   tmpl     <- get_msg("selector", "starting_workflow")
   cli::cli_alert_success(glue::glue(tmpl))
+
+  # ----------------------------------------------------------------------------
+  # check rejection file
+  # ----------------------------------------------------------------------------
+
+  # TODO: exists
+
+  # TODO: valid content
+
+  # ----------------------------------------------------------------------------
+  # reject
+  # ----------------------------------------------------------------------------
+
+  rejecting_msg <- get_msg("selector", "rejection_wip")
+  rejected_msg <- get_msg("selector", "rejection_complete")
+
+  cli::cli_alert_info(rejecting_msg)
+
   source(dirs$scripts$reject)
+
+  cli::cli_alert_success(rejected_msg)
+
   invisible(NULL)
+
 }
 
 #' Workflow D — Create monitoring report
