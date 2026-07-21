@@ -150,7 +150,7 @@ write_df_to_disk(
   df = attribs,
   dir = dirs$validation$household$recommendations
 )
-write_df_to_disk(
+write_issues_to_disk(
   df = issues_w_unanswered,
   df_name = "issues",
   dir = dirs$validation$household$recommendations
