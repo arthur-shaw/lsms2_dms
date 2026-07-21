@@ -196,10 +196,17 @@ wf_validate <- function(dirs) {
 
   # Determine detail string for confirmation message
   if (data_choice == "fetch") {
+
+    # --------------------------------------------------------------------------
+    # fetch data
+    # --------------------------------------------------------------------------
+
+    # message that data download is starting
     workflow <- get_msg("selector", "choice_get_data")
     detail   <- get_msg("selector", "detail_fetching")
     tmpl     <- get_msg("selector", "starting_workflow")
     cli::cli_alert_success(glue::glue(tmpl))
+    # download data
     source(dirs$scripts$get_data)
 
     # --------------------------------------------------------------------------
@@ -236,13 +243,19 @@ wf_validate <- function(dirs) {
     cli::cli_alert_success(validation_done_msg)
 
   } else if (data_choice == "emailed") {
+
+    # --------------------------------------------------------------------------
+    # process data
+    # --------------------------------------------------------------------------
+
+    # message that process is starting
     workflow <- get_msg("selector", "choice_get_data")
     detail   <- get_msg("selector", "detail_emailed")
     tmpl     <- get_msg("selector", "starting_workflow")
     cli::cli_alert_success(glue::glue(tmpl))
-    # Process household emailed data
+
+    # process emailed/zipped data into combined data
     get_emailed_data("household", dirs)
-    # Process community emailed data if present
     get_emailed_data("community", dirs)
 
     # --------------------------------------------------------------------------
@@ -275,14 +288,20 @@ wf_validate <- function(dirs) {
 
     cli::cli_alert_success(validation_done_msg)
 
+  # data_choice == "existing"
   } else {
-    # data_choice == "existing"
+
+    # --------------------------------------------------------------------------
+    # message about process
+    # --------------------------------------------------------------------------
+
     mtime    <- get_data_timestamp(dir = dirs)
     timestamp <- format(mtime, "%Y-%m-%d %H:%M")
     detail   <- get_msg("selector", "detail_existing")
     detail   <- glue::glue(detail, timestamp = timestamp)
     workflow <- get_msg("selector", "choice_validate")
     tmpl     <- get_msg("selector", "starting_workflow")
+
     cli::cli_alert_success(glue::glue(tmpl))
 
     # --------------------------------------------------------------------------
@@ -398,25 +417,45 @@ wf_monitor <- function(dirs) {
 
   # Determine detail string for confirmation message
   if (data_choice == "fetch") {
+
+    # --------------------------------------------------------------------------
+    # fetch data
+    # --------------------------------------------------------------------------
+
     workflow <- get_msg("selector", "choice_get_data")
     detail   <- get_msg("selector", "detail_fetching")
     tmpl     <- get_msg("selector", "starting_workflow")
     cli::cli_alert_success(glue::glue(tmpl))
     source(dirs$scripts$get_data)
 
-    # Now run monitor
-    workflow <- get_msg("selector", "choice_monitor")
-    detail   <- get_msg("selector", "detail_fetching")
-    # Note: We already printed the confirmation above, so we just source
+    # --------------------------------------------------------------------------
+    # check
+    # --------------------------------------------------------------------------
+
+    # TBD
+
+    # --------------------------------------------------------------------------
+    # monitor
+    # --------------------------------------------------------------------------
+
+    # TODO: signal start
     source(dirs$scripts$monitor)
+    # TODO: signal end
+
   } else if (data_choice == "emailed") {
+
+    # --------------------------------------------------------------------------
+    # process data
+    # --------------------------------------------------------------------------
+
+    # message that process is starting
     workflow <- get_msg("selector", "choice_get_data")
     detail   <- get_msg("selector", "detail_emailed")
     tmpl     <- get_msg("selector", "starting_workflow")
     cli::cli_alert_success(glue::glue(tmpl))
-    # Process household emailed data
+    
+    # process emailed/zipped data into combined data
     get_emailed_data("household", dirs)
-    # Process community emailed data if present
     get_emailed_data("community", dirs)
 
     # --------------------------------------------------------------------------
@@ -436,15 +475,27 @@ wf_monitor <- function(dirs) {
       param_var_name = "admin1_var"
     )
 
+    # --------------------------------------------------------------------------
+    # monitor
+    # --------------------------------------------------------------------------
+
+    # TODO: signal start
     source(dirs$scripts$monitor)
+    # TODO: signal end
+
+  # data_choice == "existing"
   } else {
-    # data_choice == "existing"
+    # --------------------------------------------------------------------------
+    # message about process
+    # --------------------------------------------------------------------------
+
     mtime    <- get_data_timestamp(dirs = dirs)
     timestamp <- format(mtime, "%Y-%m-%d %H:%M")
     detail   <- get_msg("selector", "detail_existing")
     detail   <- glue::glue(detail, timestamp = timestamp)
     workflow <- get_msg("selector", "choice_monitor")
     tmpl     <- get_msg("selector", "starting_workflow")
+
     cli::cli_alert_success(glue::glue(tmpl))
 
     # --------------------------------------------------------------------------
@@ -464,7 +515,12 @@ wf_monitor <- function(dirs) {
       param_var_name = "admin1_var"
     )
 
+    # other things TBD
+
+    # TODO: signal start
     source(dirs$scripts$monitor)
+    # TODO: signal end
+
   }
 
   invisible(NULL)
