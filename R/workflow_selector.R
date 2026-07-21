@@ -222,7 +222,19 @@ wf_validate <- function(dirs) {
       param_var_name = "admin1_var"
     )
 
+    # --------------------------------------------------------------------------
+    # validate
+    # --------------------------------------------------------------------------
+
+    validating_msg <- get_msg("selector", "data_validating")
+    validation_done_msg <- get_msg("selector", "data_validated")
+    
+    cli::cli_alert_info(validating_msg)
+
     source(dirs$scripts$validate)
+
+    cli::cli_alert_success(validation_done_msg)
+
   } else if (data_choice == "emailed") {
     workflow <- get_msg("selector", "choice_get_data")
     detail   <- get_msg("selector", "detail_emailed")
@@ -250,7 +262,19 @@ wf_validate <- function(dirs) {
       param_var_name = "admin1_var"
     )
 
+    # --------------------------------------------------------------------------
+    # validate
+    # --------------------------------------------------------------------------
+
+    validating_msg <- get_msg("selector", "data_validating")
+    validation_done_msg <- get_msg("selector", "data_validated")
+  
+    cli::cli_alert_info(validating_msg)
+
     source(dirs$scripts$validate)
+
+    cli::cli_alert_success(validation_done_msg)
+
   } else {
     # data_choice == "existing"
     mtime    <- get_data_timestamp(dir = dirs)
@@ -260,7 +284,20 @@ wf_validate <- function(dirs) {
     workflow <- get_msg("selector", "choice_validate")
     tmpl     <- get_msg("selector", "starting_workflow")
     cli::cli_alert_success(glue::glue(tmpl))
+
+    # --------------------------------------------------------------------------
+    # validate
+    # --------------------------------------------------------------------------
+
+    validating_msg <- get_msg("selector", "data_validating")
+    validation_done_msg <- get_msg("selector", "data_validated")
+
+    cli::cli_alert_info(validating_msg)
+
     source(dirs$scripts$validate)
+
+    cli::cli_alert_success(validation_done_msg)
+
   }
 
   # Step B2 — Post-validate rejection chain

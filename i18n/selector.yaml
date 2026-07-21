@@ -125,3 +125,11 @@ checking_params:
   en: "Checking parameters"
   fr: "Vérification des paramètres en cours"
 
+data_validating:
+  en: "Validating data"
+  fr: "Validation des données en cours"
+
+data_validated:
+  en: "Validation complete"
+  fr: "Validation achevée"
+
