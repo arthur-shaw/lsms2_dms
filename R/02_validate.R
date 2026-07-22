@@ -152,7 +152,8 @@ write_df_to_disk(
 )
 write_issues_to_disk(
   df = issues_w_unanswered,
-  df_name = "issues",
+  server = server,
+  workspace = workspace,
   dir = dirs$validation$household$recommendations
 )
 
