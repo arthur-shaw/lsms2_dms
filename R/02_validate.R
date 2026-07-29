@@ -150,8 +150,21 @@ write_df_to_disk(
   df = attribs,
   dir = dirs$validation$household$recommendations
 )
+
+# add decisions to issues
+# using presence in a decision file to
+issues_w_unanswered_plus_decision <- issues_w_unanswered |>
+  dplyr::mutate(
+    action = dplyr::case_when(
+      interview__id %in% decisions$to_reject_ids$interview__id ~ "reject",
+      interview__id %in% decisions$to_review_ids$interview__id ~ "review",
+      interview__id %in% decisions$to_follow_up_ids$interview__id ~ "follow-up",
+      .default = "approve"
+    )
+  )
+
 write_issues_to_disk(
-  df = issues_w_unanswered,
+  df = issues_w_unanswered_plus_decision,
   server = server,
   workspace = workspace,
   dir = dirs$validation$household$recommendations
