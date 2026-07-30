@@ -42,6 +42,12 @@ members_roster_var <- ""
 # name of variables used for outlier groups: admin1 and urban/rural
 admin1_var <- ""
 urb_rur_var <- ""
+# name of the group variable to add to the issues file
+# this will help assign issues to review by the zone of responibiity for data
+# editors
+# if no group variable is desired, leave as `""`
+# if a grouping variable is desired, add the variable name in `""`
+household_issue_group_var <- ""
 
 # -----------------------------------------------------------------------------
 # Community questionnaire

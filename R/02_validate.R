@@ -161,7 +161,31 @@ issues_w_unanswered_plus_decision <- issues_w_unanswered |>
       interview__id %in% decisions$to_follow_up_ids$interview__id ~ "follow-up",
       .default = "approve"
     )
-  )
+  ) |>
+  # add interviewer responsible
+  # take values of `responsible` from `interview__diagnostics` file
+	dplyr::left_join(
+    dplyr::select(
+      dfs_filtered$interview__diagnostics,
+      interview__id, interviewer = responsible
+    ),
+    by = "interview__id"
+  ) |>
+	dplyr::relocate(interviewer, .after = interview__key)
+
+# if an issue group variable was provided, add it
+# otherwise, no action
+if (household_issue_group_var != "") {
+  issues_w_unanswered_plus_decision <- issues_w_unanswered_plus_decision |>
+    dplyr::left_join(
+      dplyr::select(
+        dfs_filtered$households,
+        interview__id, dplyr::all_of(household_issue_group_var)
+      ),
+      by = "interview__id"
+    ) |>
+    dplyr::relocate(dplyr::all_of(household_issue_group_var), .after = interviewer)
+}
 
 write_issues_to_disk(
   df = issues_w_unanswered_plus_decision,
