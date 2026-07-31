@@ -163,9 +163,9 @@ check_qnr_on_server <- function(
 
       cli::cli_abort(
         message = c(
-          "x" = "Aucun questionnaire {qnr_type} correspondant retrouvé",
-          "i" = "Veuillez reprendre la valeur de {.code {qnr_var}}",
-          "i" = "Voici les questionnaires dans l'espace de travail cible : {qnrs}"
+          "x" = "No {qnr_type} questionnaire found",
+          "i" = "Please correct the value of {.code {qnr_var}}",
+          "i" = "Here are the questionnaires found in the target workspace: {qnrs}"
         ),
         call = call
       )
