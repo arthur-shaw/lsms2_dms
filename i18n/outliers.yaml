@@ -265,12 +265,10 @@ member:
   hh07_q08:
     en: dinner away from home
     fr: dîner en dehors du ménage
-  # ⚠️ note: this uses the wrong variable name as it appears in TZ data
-  hh07_q010: 
+  hh07_q10: 
     en: snack away from home
     fr: goûter en dehors du ménage
-  # ⚠️ note: this uses the wrong variable name as it appears in TZ data
-  hh07_q012:
+  hh07_q12:
     en: hot drinks away from home
     fr: boissons chaudes en dehors du ménage
   hh07_q14:
