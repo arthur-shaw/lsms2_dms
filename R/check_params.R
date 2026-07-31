@@ -107,7 +107,7 @@ check_server_credentials <- function(
 
   credentials_valid <- suppressMessages(
     susoapi::check_credentials(
-      server = params$serveur,
+      server = params$server,
       workspace = params$workspace,
       user = params$user,
       password = params$password,
