@@ -214,7 +214,7 @@ wf_validate <- function(dirs) {
     # --------------------------------------------------------------------------
 
     checking_params_msg <- get_msg("selector", "checking_params")
-    cli::cli_info(checking_params_msg)
+    cli::cli_alert_info(checking_params_msg)
 
     check_qnr_var_is_dset(
       combined_dir = dirs$data$household$combined,
